@@ -1,0 +1,29 @@
+[
+  {
+    "id": "case-mustang-fastback",
+    "brand": "Ford",
+    "model": "Mustang Fastback 1967",
+    "image": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=900&q=80",
+    "daysToDeliver": 92,
+    "totalClp": 41800000,
+    "summary": "Importado desde Carolina del Norte, restaurado original. Cliente recibió en Santiago en 92 días."
+  },
+  {
+    "id": "case-porsche-911t",
+    "brand": "Porsche",
+    "model": "911 T 1972",
+    "image": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80",
+    "daysToDeliver": 108,
+    "totalClp": 78500000,
+    "summary": "Subasta en Stuttgart, matching numbers verificados con Porsche Klassik."
+  },
+  {
+    "id": "case-vw-bus",
+    "brand": "Volkswagen",
+    "model": "Type 2 Bus 1970",
+    "image": "https://images.unsplash.com/photo-1543465077-db45d34b88a5?auto=format&fit=crop&w=900&q=80",
+    "daysToDeliver": 115,
+    "totalClp": 28200000,
+    "summary": "Encontrado en Hamburgo. Inspección PPI completa, embarque en container 40'."
+  }
+]

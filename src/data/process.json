@@ -1,0 +1,72 @@
+[
+  {
+    "step": 1,
+    "title": "Conversación inicial",
+    "day": "Día 0",
+    "description": "Llamada de 30 min para entender tu auto ideal, presupuesto y uso esperado.",
+    "icon": "MessageCircle"
+  },
+  {
+    "step": 2,
+    "title": "Propuesta con 3 candidatos",
+    "day": "Día 3-7",
+    "description": "Te presentamos 3 autos reales con historial, fotos y rango de costos puestos en Santiago.",
+    "icon": "ListChecks"
+  },
+  {
+    "step": 3,
+    "title": "Firma de mandato + 10%",
+    "day": "Día 8",
+    "description": "Firmas el mandato de búsqueda y pagas 10% para reservar la operación.",
+    "icon": "FileSignature"
+  },
+  {
+    "step": 4,
+    "title": "Inspección PPI en USA / DE",
+    "day": "Día 10-20",
+    "description": "Mecánico certificado hace inspección con video + 80 fotos detalladas. Tú decides.",
+    "icon": "ScanSearch"
+  },
+  {
+    "step": 5,
+    "title": "Cliente aprueba auto",
+    "day": "Día 21",
+    "description": "Repasamos juntos la inspección. Si algo no calza, buscamos otro.",
+    "icon": "ThumbsUp"
+  },
+  {
+    "step": 6,
+    "title": "Pago 60% + compra en origen",
+    "day": "Día 22-30",
+    "description": "Pagas 60%. Cerramos compra con vendedor y movemos auto a puerto de embarque.",
+    "icon": "CreditCard"
+  },
+  {
+    "step": 7,
+    "title": "Embarque (RoRo o container)",
+    "day": "Día 31-45",
+    "description": "Auto cargado en RoRo o container 40' (compartido o exclusivo). Seguro full.",
+    "icon": "Ship"
+  },
+  {
+    "step": 8,
+    "title": "Tránsito marítimo",
+    "day": "Día 46-80",
+    "description": "15 a 45 días de navegación. Trackeo en tiempo real, te avisamos cada hito.",
+    "icon": "Navigation"
+  },
+  {
+    "step": 9,
+    "title": "Llegada + Aduana + CAACH",
+    "day": "Día 81-95",
+    "description": "Desembarque en San Antonio, trámite aduanero e inspección CAACH para placa chilena.",
+    "icon": "ShieldCheck"
+  },
+  {
+    "step": 10,
+    "title": "Pago final 30% + entrega",
+    "day": "Día 96-120",
+    "description": "Pagas el 30% restante. Te entregamos el auto en Santiago, patente y papeles listos.",
+    "icon": "KeyRound"
+  }
+]
