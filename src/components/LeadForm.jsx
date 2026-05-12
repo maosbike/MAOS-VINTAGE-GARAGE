@@ -45,9 +45,9 @@ export default function LeadForm({ initialData, compact = false }) {
 
   if (sent) {
     return (
-      <div className="flex flex-col items-center gap-3 rounded-sm border-2 border-dashed border-racing-green bg-paper px-4 py-10 text-center">
-        <CheckCircle2 size={40} className="text-racing-green" aria-hidden="true" />
-        <h3 className="font-display text-2xl font-bold text-ink">¡Recibido!</h3>
+      <div className="flex flex-col items-center gap-3 rounded-sm border border-signal-green/50 bg-signal-green/10 px-4 py-10 text-center">
+        <CheckCircle2 size={40} className="text-signal-green" aria-hidden="true" />
+        <h3 className="font-display text-3xl tracking-wider2">¡Recibido!</h3>
         <p className="font-serif text-base italic text-ink-soft">
           Te contactaremos dentro de 24 horas hábiles con los próximos pasos.
         </p>
@@ -58,72 +58,33 @@ export default function LeadForm({ initialData, compact = false }) {
   return (
     <form onSubmit={onSubmit} className={`grid gap-4 ${compact ? '' : 'sm:grid-cols-2'}`}>
       <Field id="lead-name" label="Nombre">
-        <input
-          id="lead-name"
-          required
-          autoComplete="name"
-          value={form.name}
-          onChange={update('name')}
-          className="input-base"
-        />
+        <input id="lead-name" required autoComplete="name" value={form.name} onChange={update('name')} className="input-base" />
       </Field>
       <Field id="lead-email" label="Email">
-        <input
-          id="lead-email"
-          type="email"
-          required
-          autoComplete="email"
-          value={form.email}
-          onChange={update('email')}
-          className="input-base"
-        />
+        <input id="lead-email" type="email" required autoComplete="email" value={form.email} onChange={update('email')} className="input-base" />
       </Field>
       <Field id="lead-phone" label="Teléfono">
-        <input
-          id="lead-phone"
-          type="tel"
-          autoComplete="tel"
-          value={form.phone}
-          onChange={update('phone')}
-          className="input-base"
-          placeholder="+56 9 ..."
-        />
+        <input id="lead-phone" type="tel" autoComplete="tel" value={form.phone} onChange={update('phone')} className="input-base" placeholder="+56 9 ..." />
       </Field>
       <Field id="lead-budget" label="Presupuesto">
         <select id="lead-budget" value={form.budget} onChange={update('budget')} className="input-base">
-          {BUDGETS.map((b) => <option key={b} value={b}>{b}</option>)}
+          {BUDGETS.map((b) => <option key={b} value={b} className="bg-canvas-raised">{b}</option>)}
         </select>
       </Field>
       <Field id="lead-target" label="¿Qué auto buscas?" className="sm:col-span-2">
-        <textarea
-          id="lead-target"
-          rows={3}
-          value={form.target}
-          onChange={update('target')}
-          className="input-base resize-none"
-          placeholder="Marca, modelo, año, color, especificaciones…"
-        />
+        <textarea id="lead-target" rows={3} value={form.target} onChange={update('target')} className="input-base resize-none" placeholder="Marca, modelo, año, color, especificaciones…" />
       </Field>
       <Field id="lead-origin" label="País de preferencia">
         <select id="lead-origin" value={form.origin} onChange={update('origin')} className="input-base">
-          {ORIGINS.map((o) => <option key={o} value={o}>{o}</option>)}
+          {ORIGINS.map((o) => <option key={o} value={o} className="bg-canvas-raised">{o}</option>)}
         </select>
       </Field>
       <Field id="lead-message" label="Mensaje" className="sm:col-span-2">
-        <textarea
-          id="lead-message"
-          rows={3}
-          value={form.message}
-          onChange={update('message')}
-          className="input-base resize-none"
-          placeholder="Cuéntanos más detalles…"
-        />
+        <textarea id="lead-message" rows={3} value={form.message} onChange={update('message')} className="input-base resize-none" placeholder="Cuéntanos más detalles…" />
       </Field>
       <div className="sm:col-span-2">
-        <button type="submit" className="btn-primary w-full">
-          Enviar solicitud
-        </button>
-        <p className="mt-2 font-mono text-[10px] uppercase tracking-widest2 text-ink-muted">
+        <button type="submit" className="btn-primary w-full">Enviar solicitud</button>
+        <p className="mt-2 font-mono text-[10px] uppercase tracking-widest2 text-ink-faint">
           Te contactaremos en menos de 24 horas hábiles.
         </p>
       </div>
@@ -134,10 +95,7 @@ export default function LeadForm({ initialData, compact = false }) {
 function Field({ id, label, children, className = '' }) {
   return (
     <div className={`space-y-1.5 ${className}`}>
-      <label
-        htmlFor={id}
-        className="font-mono text-[10px] font-bold uppercase tracking-widest2 text-ink-muted"
-      >
+      <label htmlFor={id} className="font-mono text-[10px] font-bold uppercase tracking-widest2 text-ink-faint">
         {label}
       </label>
       {children}

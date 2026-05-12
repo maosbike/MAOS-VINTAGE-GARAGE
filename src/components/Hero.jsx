@@ -1,153 +1,151 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Calculator, Car } from 'lucide-react';
+import { Calculator, Car, ArrowRight } from 'lucide-react';
+import CarImage from './CarImage.jsx';
 
-const ORIGINS = ['USA', 'Alemania', 'Italia', 'Reino Unido', 'Japón', 'Francia', 'Canadá'];
+const ORIGIN_TICKER = [
+  'Estados Unidos',
+  'Alemania',
+  'Italia',
+  'Reino Unido',
+  'Japón',
+  'Francia',
+  'Canadá',
+  'Australia',
+  'España',
+  'Suiza',
+];
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-ink-line" aria-labelledby="hero-heading">
-      {/* Magazine cover header strip */}
-      <div className="border-b border-ink-line bg-paper-deep text-paper-light">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 font-mono text-[10px] uppercase tracking-widest2 sm:px-6 lg:px-8">
-          <span className="text-brass">Vol. 01 · No. 01</span>
-          <span className="hidden text-paper-light/70 sm:inline">Importación de autos clásicos · Edición Chile</span>
+    <section className="relative overflow-hidden" aria-labelledby="hero-heading">
+      {/* Magazine header bar */}
+      <div className="border-b border-canvas-line bg-canvas-raised">
+        <div className="mx-auto flex h-9 max-w-7xl items-center justify-between px-4 font-mono text-[10px] uppercase tracking-widest2 text-ink-muted sm:px-6 lg:px-8">
+          <span className="text-brass">VOL. I · No. 01</span>
+          <span className="hidden sm:inline">Importación bajo pedido · Edición Chile</span>
           <span className="text-brass">MMXXV</span>
         </div>
       </div>
 
-      <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 pb-12 pt-10 sm:px-6 sm:pb-20 sm:pt-16 lg:grid-cols-12 lg:px-8 lg:gap-12 lg:pt-24">
-        <div className="lg:col-span-7">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="eyebrow"
-          >
-            Importación bajo pedido · Desde 1 país, hacia tu garage
-          </motion.p>
+      <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 pb-16 pt-12 sm:px-6 sm:pb-24 sm:pt-16 lg:grid-cols-12 lg:gap-12 lg:px-8 lg:pt-20">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="lg:col-span-7"
+        >
+          <p className="eyebrow">Importación bajo pedido a Chile</p>
 
-          <motion.h1
+          <h1
             id="hero-heading"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="h-display mt-6 text-[clamp(2.6rem,8.5vw,6.5rem)] text-ink"
+            className="mt-8 text-[clamp(2.8rem,9vw,7rem)] font-display uppercase leading-[0.88] tracking-wider2 text-ink"
           >
-            El clásico que{' '}
-            <span className="italic text-oxblood">soñabas</span>,<br />
-            puesto en tu{' '}
-            <span className="relative inline-block">
-              garage
-              <motion.span
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                style={{ originX: 0 }}
-                className="absolute -bottom-1 left-0 right-0 h-[6px] bg-cognac"
-                aria-hidden="true"
-              />
+            <span className="block">El clásico</span>
+            <span className="block">
+              que <em className="font-serif italic font-normal normal-case tracking-normal text-cognac">soñabas</em>,
             </span>
-            .
-          </motion.h1>
+            <span className="block">
+              en tu garage.
+            </span>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-7 max-w-xl font-serif text-xl leading-relaxed text-ink-soft sm:text-2xl"
-          >
-            Lo buscamos, lo inspeccionamos, lo embarcamos y te lo entregamos en Chile.
-            <em className="text-oxblood"> Transparencia total. Sin sorpresas.</em>
-          </motion.p>
-
-          {/* Origin marquee */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="mt-8 flex flex-wrap items-center gap-x-2 gap-y-2 border-y border-ink-line py-3"
-          >
-            <span className="font-mono text-[10px] font-bold uppercase tracking-widest2 text-ink-muted">
-              Desde:
-            </span>
-            {ORIGINS.map((o, i) => (
-              <span key={o} className="flex items-center gap-2">
-                <span className="font-condensed text-base uppercase tracking-wider2 text-ink">
-                  {o}
-                </span>
-                {i < ORIGINS.length - 1 && (
-                  <span className="text-oxblood" aria-hidden="true">·</span>
-                )}
-              </span>
-            ))}
-            <span className="font-condensed text-base uppercase tracking-wider2 text-cognac">
-              + cualquier país del mundo
-            </span>
-          </motion.div>
+          <p className="mt-8 max-w-xl font-serif text-2xl italic leading-snug text-ink-soft sm:text-3xl">
+            Lo buscamos, lo inspeccionamos, lo embarcamos y te lo entregamos. Tu rol: elegir.
+          </p>
 
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
-            className="mt-8 flex flex-col gap-3 sm:flex-row"
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="mt-10 flex flex-col gap-3 sm:flex-row"
           >
-            <Link to="/calculadora" className="btn-primary text-xs">
-              <Calculator size={16} aria-hidden="true" />
+            <Link to="/calculadora" className="btn-primary">
+              <Calculator size={14} aria-hidden="true" />
               Cotizar mi auto
+              <ArrowRight size={14} aria-hidden="true" />
             </Link>
-            <Link to="/catalogo" className="btn-outline text-xs">
-              <Car size={16} aria-hidden="true" />
+            <Link to="/catalogo" className="btn-outline">
+              <Car size={14} aria-hidden="true" />
               Ver catálogo
             </Link>
           </motion.div>
-        </div>
 
-        {/* Right column — vintage "ficha" panel */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="lg:col-span-5"
-        >
-          <div className="card-paper p-6 sm:p-8">
-            <div className="flex items-center justify-between border-b border-ink-line pb-3">
-              <span className="font-mono text-[10px] font-bold uppercase tracking-widest2 text-oxblood">
-                Manual del propietario
+          {/* Origin ticker */}
+          <div className="mt-12 overflow-hidden border-y border-canvas-line py-3">
+            <div className="flex items-center gap-3">
+              <span className="shrink-0 font-mono text-[10px] font-bold uppercase tracking-widest2 text-ink-faint">
+                Desde
               </span>
-              <span className="font-mono text-[10px] uppercase tracking-widest2 text-ink-muted">
-                Edición 2025
-              </span>
-            </div>
-            <h2 className="mt-5 font-display text-3xl font-bold text-ink">
-              ¿Por qué importar<br />con nosotros?
-            </h2>
-            <ul className="mt-5 space-y-4">
-              {[
-                ['01', 'Transparencia total', 'Cada peso desglosado antes de firmar.'],
-                ['02', 'Inspección previa', 'PPI con 80 fotos y video antes de pagar.'],
-                ['03', 'Seguro en tránsito', '100% asegurado puerta a puerta.'],
-                ['04', 'Plazos definidos', '75–120 días puerta a puerta.'],
-              ].map(([n, title, desc]) => (
-                <li key={n} className="flex gap-3 border-b border-dashed border-ink-line/60 pb-3 last:border-b-0">
-                  <span className="font-condensed text-3xl font-normal leading-none text-cognac">
-                    {n}
-                  </span>
-                  <div>
-                    <p className="font-display text-lg font-bold text-ink">{title}</p>
-                    <p className="font-serif text-sm italic text-ink-muted">{desc}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6 border-t border-ink-line pt-4">
-              <p className="font-mono text-[10px] uppercase tracking-widest2 text-ink-muted">
-                Una empresa del grupo MaosBike
-              </p>
+              <div className="relative flex-1 overflow-hidden">
+                <motion.div
+                  className="flex items-center gap-8 whitespace-nowrap"
+                  animate={{ x: ['0%', '-50%'] }}
+                  transition={{ duration: 35, repeat: Infinity, ease: 'linear' }}
+                >
+                  {[...ORIGIN_TICKER, ...ORIGIN_TICKER].map((label, i) => (
+                    <span key={`${label}-${i}`} className="flex items-center gap-6 font-display text-2xl tracking-wider2 text-ink-soft">
+                      {label}
+                      <span className="h-1 w-1 rounded-full bg-cognac" aria-hidden="true" />
+                    </span>
+                  ))}
+                </motion.div>
+                <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-canvas to-transparent" aria-hidden="true" />
+                <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-canvas to-transparent" aria-hidden="true" />
+              </div>
             </div>
           </div>
         </motion.div>
+
+        {/* Right: layered photo + metadata frame */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="relative lg:col-span-5"
+        >
+          {/* Corner checker accents */}
+          <div className="absolute -left-2 -top-2 z-10 h-10 w-10 checker text-ink/70 bg-canvas-raised" aria-hidden="true" />
+          <div className="absolute -bottom-2 -right-2 z-10 h-10 w-10 checker text-ink/70 bg-canvas-raised" aria-hidden="true" />
+
+          <div className="relative aspect-[4/5] overflow-hidden border border-canvas-line shadow-plate">
+            <CarImage
+              src="https://commons.wikimedia.org/wiki/Special:FilePath/1969%20red%20Chevrolet%20Camaro%20SS%20front.JPG?width=1400"
+              brand="Chevrolet"
+              model="Camaro SS"
+              year={1969}
+              eager
+              className="absolute inset-0"
+            />
+            {/* Editorial caption */}
+            <div className="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-6">
+              <p className="font-mono text-[10px] uppercase tracking-widest2 text-brass">
+                Portada · MVG-006
+              </p>
+              <p className="mt-1 font-display text-3xl leading-none text-ink sm:text-4xl">
+                Chevrolet Camaro SS
+              </p>
+              <p className="font-serif text-base italic text-ink-soft">
+                1969 · Disponible
+              </p>
+            </div>
+          </div>
+
+          {/* Floating stat plate */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.7 }}
+            className="absolute -bottom-6 -left-6 hidden border border-cognac/40 bg-canvas-raised px-4 py-3 shadow-plate sm:block"
+          >
+            <p className="font-mono text-[10px] uppercase tracking-widest2 text-cognac">Tiempo promedio</p>
+            <p className="font-display text-3xl text-ink">75–120 días</p>
+          </motion.div>
+        </motion.div>
       </div>
+
+      {/* Bottom checker accent */}
+      <div className="checker text-ink h-2 bg-canvas-raised" aria-hidden="true" />
     </section>
   );
 }

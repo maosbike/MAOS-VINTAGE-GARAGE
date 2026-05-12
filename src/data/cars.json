@@ -14,7 +14,8 @@
     "leadTimeDays": 95,
     "status": "available",
     "tag": "Restaurado",
-    "accent": "#6b1f1f"
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/1967%20Ford%20Mustang%20fastback.JPG?width=1200",
+    "imageCredit": "Wikimedia Commons"
   },
   {
     "id": "porsche-911-72",
@@ -31,7 +32,8 @@
     "leadTimeDays": 110,
     "status": "available",
     "tag": "Matching numbers",
-    "accent": "#1f3a2a"
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Porsche%20911%20T%2C%20Bj.%201973%2C%20130%20PS%20(2017-06-17%20Sp).JPG?width=1200",
+    "imageCredit": "Wikimedia Commons"
   },
   {
     "id": "vw-beetle-65",
@@ -48,7 +50,8 @@
     "leadTimeDays": 90,
     "status": "available",
     "tag": "Original",
-    "accent": "#a47e3b"
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/1965%20Volkswagen%20Beetle%20(40933155980).jpg?width=1200",
+    "imageCredit": "Wikimedia Commons"
   },
   {
     "id": "chevy-c10-72",
@@ -65,7 +68,8 @@
     "leadTimeDays": 100,
     "status": "available",
     "tag": "Resto-mod",
-    "accent": "#b25b1c"
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/1972%20Chevrolet%20C10%20Cheyenne%20Pickup%20(21176795799).jpg?width=1200",
+    "imageCredit": "Wikimedia Commons"
   },
   {
     "id": "mb-280sl-70",
@@ -82,7 +86,8 @@
     "leadTimeDays": 115,
     "status": "available",
     "tag": "Convertible",
-    "accent": "#1f3a2a"
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Mercedes-Benz%20W113%20(front)%202.JPG?width=1200",
+    "imageCredit": "Wikimedia Commons"
   },
   {
     "id": "camaro-69",
@@ -99,7 +104,8 @@
     "leadTimeDays": 95,
     "status": "available",
     "tag": "V8 396",
-    "accent": "#6b1f1f"
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/1969%20red%20Chevrolet%20Camaro%20SS%20front.JPG?width=1200",
+    "imageCredit": "Wikimedia Commons"
   },
   {
     "id": "bmw-2002-74",
@@ -116,7 +122,8 @@
     "leadTimeDays": 105,
     "status": "search-active",
     "tag": "Búsqueda activa",
-    "accent": "#1f3a2a"
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/1974%20BMW%202002%20(E10)%20Tii.JPG?width=1200",
+    "imageCredit": "Wikimedia Commons"
   },
   {
     "id": "porsche-356-63",
@@ -133,7 +140,8 @@
     "leadTimeDays": 120,
     "status": "search-active",
     "tag": "Búsqueda activa",
-    "accent": "#1a1410"
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Porsche%20356%20B%2C%20Bj.%201960%20(2013-05-04%20Sp).JPG?width=1200",
+    "imageCredit": "Wikimedia Commons"
   },
   {
     "id": "ford-bronco-75",
@@ -150,7 +158,8 @@
     "leadTimeDays": 100,
     "status": "search-active",
     "tag": "Búsqueda activa",
-    "accent": "#b25b1c"
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/1971%20Ford%20Bronco%20(27758249054).jpg?width=1200",
+    "imageCredit": "Wikimedia Commons"
   },
   {
     "id": "toyota-2000gt-68",
@@ -167,7 +176,8 @@
     "leadTimeDays": 130,
     "status": "search-active",
     "tag": "Búsqueda activa",
-    "accent": "#6b1f1f"
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/1968%20Toyota%202000GT%20photo1.JPG?width=1200",
+    "imageCredit": "Wikimedia Commons"
   },
   {
     "id": "jaguar-etype-67",
@@ -184,7 +194,8 @@
     "leadTimeDays": 125,
     "status": "search-active",
     "tag": "Búsqueda activa",
-    "accent": "#1f3a2a"
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Jaguar%20E-Type%20Light%20Weight%20(left%20side)%20built%20in%201963-64.JPG?width=1200",
+    "imageCredit": "Wikimedia Commons"
   },
   {
     "id": "chevy-corvette-67",
@@ -201,7 +212,8 @@
     "leadTimeDays": 100,
     "status": "sold",
     "tag": "Importado vendido",
-    "accent": "#6b1f1f"
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/1967%20Chevrolet%20Corvette%20427-400%20Coupe.JPG?width=1200",
+    "imageCredit": "Wikimedia Commons"
   },
   {
     "id": "vw-bus-70",
@@ -218,6 +230,7 @@
     "leadTimeDays": 110,
     "status": "sold",
     "tag": "Importado vendido",
-    "accent": "#1f3a2a"
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/1976%20Volkswagen%20Kombi%20(T2)%20(40107027615).jpg?width=1200",
+    "imageCredit": "Wikimedia Commons"
   }
 ]

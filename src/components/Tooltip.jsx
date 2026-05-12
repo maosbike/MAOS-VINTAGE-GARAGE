@@ -15,7 +15,7 @@ export default function Tooltip({ text, label = 'Más información' }) {
         onFocus={() => setOpen(true)}
         onBlur={() => setOpen(false)}
         onClick={() => setOpen((v) => !v)}
-        className="text-ink-muted hover:text-oxblood focus:text-oxblood focus:outline-none"
+        className="text-ink-muted hover:text-cognac focus:text-cognac focus:outline-none"
       >
         <HelpCircle size={14} aria-hidden="true" />
       </button>
@@ -23,7 +23,7 @@ export default function Tooltip({ text, label = 'Más información' }) {
         <span
           role="tooltip"
           id={id}
-          className="absolute bottom-full left-1/2 z-20 mb-2 w-60 -translate-x-1/2 rounded-sm border border-ink-line bg-paper-deep px-3 py-2 font-serif text-xs leading-relaxed text-paper-light shadow-paper"
+          className="absolute bottom-full left-1/2 z-20 mb-2 w-60 -translate-x-1/2 rounded-sm border border-cognac/40 bg-canvas-raised px-3 py-2 font-serif text-xs italic leading-relaxed text-ink-soft shadow-plate"
         >
           {text}
         </span>
