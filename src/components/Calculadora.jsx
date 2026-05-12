@@ -1,8 +1,11 @@
 import { useMemo, useState } from 'react';
+import { motion } from 'framer-motion';
 import { Calculator, ArrowRight } from 'lucide-react';
 import Tooltip from './Tooltip.jsx';
 import Modal from './Modal.jsx';
 import LeadForm from './LeadForm.jsx';
+import CheckerStrip from './CheckerStrip.jsx';
+import useCountUp from '../hooks/useCountUp.js';
 import { calcImportCost } from '../utils/cost.js';
 import { formatCLP, formatUSD } from '../utils/format.js';
 
@@ -31,17 +34,20 @@ export default function Calculadora({ variant = 'page' }) {
     [purchase, origin, fx, fta]
   );
 
-  const isCompact = variant === 'home';
+  const animatedTotal = useCountUp(result.totalCLP, 500);
 
   return (
     <section
       id="calculadora"
       aria-labelledby="calc-heading"
-      className={isCompact ? 'section' : ''}
+      className={variant === 'home' ? 'section' : ''}
     >
-      <div className={isCompact ? '' : 'mb-8'}>
+      <div className="mb-8">
         <p className="eyebrow">Calculadora</p>
-        <h2 id="calc-heading" className="mt-2 text-3xl font-bold sm:text-4xl">
+        <h2
+          id="calc-heading"
+          className="h-display mt-2 text-[clamp(2rem,6vw,3.5rem)]"
+        >
           Estima tu costo de importación
         </h2>
         <p className="mt-3 max-w-2xl text-text-muted">
@@ -52,9 +58,11 @@ export default function Calculadora({ variant = 'page' }) {
 
       <div className="grid gap-6 lg:grid-cols-5">
         {/* Inputs */}
-        <div className="card p-5 lg:col-span-2">
-          <h3 className="mb-4 text-lg font-semibold">Tu auto</h3>
-          <div className="space-y-4">
+        <div className="card overflow-hidden lg:col-span-2">
+          <div className="border-b border-bg-border bg-bg-card p-5">
+            <h3 className="h-display text-2xl">Tu auto</h3>
+          </div>
+          <div className="space-y-4 p-5">
             <Field label="Tipo de auto" htmlFor="ct">
               <select
                 id="ct"
@@ -71,31 +79,36 @@ export default function Calculadora({ variant = 'page' }) {
             </Field>
 
             <Field label="País de origen" htmlFor="origin">
-              <select
-                id="origin"
-                value={origin}
-                onChange={(e) => setOrigin(e.target.value)}
-                className="input-base"
-              >
-                <option value="USA">Estados Unidos</option>
-                <option value="DE">Alemania</option>
-              </select>
+              <div className="grid grid-cols-2 gap-2" role="radiogroup" aria-label="País de origen">
+                <OriginButton
+                  active={origin === 'USA'}
+                  onClick={() => setOrigin('USA')}
+                  flag="🇺🇸"
+                  label="USA"
+                />
+                <OriginButton
+                  active={origin === 'DE'}
+                  onClick={() => setOrigin('DE')}
+                  flag="🇩🇪"
+                  label="Alemania"
+                />
+              </div>
             </Field>
 
             <Field label="Precio de compra (USD)" htmlFor="price">
               <div className="relative">
-                <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-text-muted">
+                <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 font-mono text-text-muted">
                   $
                 </span>
                 <input
                   id="price"
                   type="number"
-                  inputMode="numeric"
+                  inputMode="decimal"
                   min={0}
                   step={500}
                   value={purchase}
                   onChange={(e) => setPurchase(e.target.value)}
-                  className="input-base pl-8"
+                  className="input-base pl-8 text-lg font-mono"
                 />
               </div>
             </Field>
@@ -104,15 +117,16 @@ export default function Calculadora({ variant = 'page' }) {
               <input
                 id="fx"
                 type="number"
+                inputMode="decimal"
                 min={0}
                 step={1}
                 value={fx}
                 onChange={(e) => setFx(e.target.value)}
-                className="input-base"
+                className="input-base font-mono"
               />
             </Field>
 
-            <label className="flex items-start gap-3 text-sm text-text-muted">
+            <label className="flex cursor-pointer items-start gap-3 rounded-md border border-bg-border bg-bg/40 p-3 text-sm text-text-muted transition-colors hover:border-brand-orange/40">
               <input
                 type="checkbox"
                 checked={fta}
@@ -121,24 +135,22 @@ export default function Calculadora({ variant = 'page' }) {
               />
               <span>
                 Auto califica para TLC (arancel 0%){' '}
-                <Tooltip
-                  text="Los autos con TLC vigente con Chile (USA, UE) pagan 0% de arancel. Si tu auto no califica, paga 6%."
-                />
+                <Tooltip text="Los autos con TLC vigente con Chile (USA, UE) pagan 0% de arancel. Si tu auto no califica, paga 6%." />
               </span>
             </label>
           </div>
         </div>
 
         {/* Output */}
-        <div className="card p-5 lg:col-span-3">
-          <div className="mb-4 flex items-center justify-between">
-            <h3 className="text-lg font-semibold">Desglose estimado</h3>
-            <span className="rounded-full border border-bg-border px-3 py-1 text-xs text-text-muted">
-              FX: {fx} CLP/USD
+        <div className="card overflow-hidden lg:col-span-3">
+          <div className="flex items-center justify-between border-b border-bg-border bg-bg-card p-5">
+            <h3 className="h-display text-2xl">Desglose estimado</h3>
+            <span className="rounded-full border border-bg-border px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-text-muted">
+              FX {fx}
             </span>
           </div>
 
-          <ul className="divide-y divide-bg-border">
+          <ul className="divide-y divide-bg-border px-5">
             <Line
               label="Precio de compra"
               value={formatUSD(result.purchaseUSD)}
@@ -189,28 +201,36 @@ export default function Calculadora({ variant = 'page' }) {
               highlight
             />
             <Line
-              label="Comisión MaosCars (10%)"
+              label="Comisión Maos Vintage Garage (10%)"
               value={formatCLP(result.commissionCLP)}
-              tooltip="Honorarios MaosCars: búsqueda, inspección, gestión y entrega."
+              tooltip="Honorarios MVG: búsqueda, inspección, gestión y entrega."
             />
           </ul>
 
-          <div className="mt-5 rounded-md border border-brand-orange/40 bg-brand-orange/10 p-4">
-            <div className="flex items-baseline justify-between gap-3">
-              <span className="text-sm font-semibold uppercase tracking-wide text-brand-orange">
-                Total final
-              </span>
-              <span className="text-2xl font-bold sm:text-3xl">
-                {formatCLP(result.totalCLP)}
-              </span>
+          <div className="m-5 mt-4 overflow-hidden rounded-md border border-brand-orange/40 bg-brand-orange/10">
+            <CheckerStrip height="h-2" size="sm" />
+            <div className="p-4">
+              <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                <span className="font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-brand-orange">
+                  Total final
+                </span>
+                <motion.span
+                  key={Math.round(animatedTotal / 100000)}
+                  initial={{ scale: 0.98, opacity: 0.7 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.2 }}
+                  className="h-display text-3xl text-white sm:text-4xl"
+                >
+                  {formatCLP(animatedTotal)}
+                </motion.span>
+              </div>
+              <p className="mt-1 font-mono text-[11px] text-text-muted">
+                ≈ {formatUSD(result.totalCLP / (Number(fx) || 1))} USD
+              </p>
             </div>
-            <p className="mt-1 text-xs text-text-muted">
-              Equivale a ~{formatUSD(result.totalCLP / (Number(fx) || 1))} al
-              tipo de cambio actual.
-            </p>
           </div>
 
-          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-3 border-t border-bg-border p-5 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-xs text-text-muted">
               Estimación referencial. Costos finales se confirman con cotización
               formal antes de firmar mandato.
@@ -218,10 +238,10 @@ export default function Calculadora({ variant = 'page' }) {
             <button
               type="button"
               onClick={() => setModalOpen(true)}
-              className="btn-primary"
+              className="btn-primary w-full text-sm sm:w-auto"
             >
               <Calculator size={18} aria-hidden="true" />
-              Empezar pedido con este precio
+              Empezar pedido
               <ArrowRight size={16} aria-hidden="true" />
             </button>
           </div>
@@ -234,9 +254,10 @@ export default function Calculadora({ variant = 'page' }) {
         title="Empezar tu pedido"
       >
         <p className="mb-4 text-sm text-text-muted">
-          Tu cotización estimada: <strong className="text-text">{formatCLP(result.totalCLP)}</strong>{' '}
-          ({origin === 'USA' ? 'USA' : 'Alemania'}, USD {Number(purchase || 0).toLocaleString('en-US')} compra).
-          Déjanos tus datos y te contactamos.
+          Tu cotización estimada:{' '}
+          <strong className="text-text">{formatCLP(result.totalCLP)}</strong>{' '}
+          ({origin === 'USA' ? 'USA' : 'Alemania'}, USD{' '}
+          {Number(purchase || 0).toLocaleString('en-US')} compra).
         </p>
         <LeadForm
           compact
@@ -254,15 +275,34 @@ export default function Calculadora({ variant = 'page' }) {
 
 function Field({ label, htmlFor, children }) {
   return (
-    <div className="space-y-1">
+    <div className="space-y-1.5">
       <label
         htmlFor={htmlFor}
-        className="text-xs font-medium uppercase tracking-wide text-text-muted"
+        className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-text-muted"
       >
         {label}
       </label>
       {children}
     </div>
+  );
+}
+
+function OriginButton({ active, onClick, flag, label }) {
+  return (
+    <button
+      type="button"
+      role="radio"
+      aria-checked={active}
+      onClick={onClick}
+      className={`flex items-center justify-center gap-2 rounded-md border px-3 py-3 text-sm font-semibold uppercase tracking-wider transition-all active:scale-[0.97] ${
+        active
+          ? 'border-brand-orange bg-brand-orange/10 text-brand-orange'
+          : 'border-bg-border bg-bg/40 text-text-muted hover:border-brand-orange/40 hover:text-text'
+      }`}
+    >
+      <span className="text-base" aria-hidden="true">{flag}</span>
+      {label}
+    </button>
   );
 }
 
@@ -277,7 +317,7 @@ function Line({ label, value, tooltip, highlight }) {
         {label}
         {tooltip && <Tooltip text={tooltip} />}
       </span>
-      <span className={highlight ? 'text-text' : 'text-text'}>{value}</span>
+      <span className="font-mono text-text">{value}</span>
     </li>
   );
 }

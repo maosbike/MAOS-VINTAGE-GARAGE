@@ -1,6 +1,7 @@
 import { Mail, MessageCircle, MapPin } from 'lucide-react';
 import Seo from '../components/Seo.jsx';
 import LeadForm from '../components/LeadForm.jsx';
+import CheckerStrip from '../components/CheckerStrip.jsx';
 
 export default function ContactoPage() {
   return (
@@ -11,28 +12,35 @@ export default function ContactoPage() {
         path="/contacto"
       />
       <div className="section">
-        <div className="grid gap-12 lg:grid-cols-[1fr_360px]">
+        <div className="grid gap-10 lg:grid-cols-[1fr_360px]">
           <div>
             <p className="eyebrow">Contacto</p>
-            <h1 className="mt-2 text-3xl font-bold sm:text-4xl">
-              Cuéntanos qué auto buscas
+            <h1 className="h-display mt-2 text-[clamp(2.2rem,7vw,4.5rem)]">
+              Cuéntanos qué<br />auto buscas
             </h1>
             <p className="mt-3 max-w-xl text-text-muted">
               Respondemos en menos de 24 horas hábiles. Si prefieres,
               escríbenos directo por WhatsApp.
             </p>
 
-            <div className="card mt-8 p-6 sm:p-8">
-              <LeadForm />
+            <CheckerStrip height="h-2" size="sm" className="mt-8" />
+
+            <div className="card mt-2 overflow-hidden">
+              <div className="border-b border-bg-border bg-bg-card p-5">
+                <h2 className="h-display text-2xl">Formulario</h2>
+              </div>
+              <div className="p-5 sm:p-7">
+                <LeadForm />
+              </div>
             </div>
           </div>
 
           <aside className="space-y-4">
-            <div className="card p-6">
-              <h2 className="text-sm font-semibold uppercase tracking-wide text-text-muted">
-                Canales directos
-              </h2>
-              <ul className="mt-4 space-y-4 text-sm">
+            <div className="card overflow-hidden">
+              <div className="border-b border-bg-border bg-bg-card p-5">
+                <h2 className="h-display text-xl">Canales directos</h2>
+              </div>
+              <ul className="space-y-4 p-5 text-sm">
                 <li>
                   <a
                     href="https://wa.me/56900000000"
@@ -40,10 +48,10 @@ export default function ContactoPage() {
                     rel="noreferrer noopener"
                     className="flex items-start gap-3 text-text hover:text-brand-orange"
                   >
-                    <MessageCircle size={18} className="mt-0.5 text-brand-orange" aria-hidden="true" />
+                    <MessageCircle size={20} className="mt-0.5 text-brand-orange" aria-hidden="true" />
                     <span>
-                      <span className="block font-medium">WhatsApp</span>
-                      <span className="text-text-muted">+56 9 0000 0000</span>
+                      <span className="block font-semibold uppercase tracking-wider">WhatsApp</span>
+                      <span className="font-mono text-text-muted">+56 9 0000 0000</span>
                     </span>
                   </a>
                 </li>
@@ -52,30 +60,30 @@ export default function ContactoPage() {
                     href="mailto:hola@maoscars.cl"
                     className="flex items-start gap-3 text-text hover:text-brand-orange"
                   >
-                    <Mail size={18} className="mt-0.5 text-brand-orange" aria-hidden="true" />
+                    <Mail size={20} className="mt-0.5 text-brand-orange" aria-hidden="true" />
                     <span>
-                      <span className="block font-medium">Email</span>
-                      <span className="text-text-muted">hola@maoscars.cl</span>
+                      <span className="block font-semibold uppercase tracking-wider">Email</span>
+                      <span className="font-mono text-text-muted">hola@maoscars.cl</span>
                     </span>
                   </a>
                 </li>
                 <li className="flex items-start gap-3 text-text-muted">
-                  <MapPin size={18} className="mt-0.5 text-brand-orange" aria-hidden="true" />
+                  <MapPin size={20} className="mt-0.5 text-brand-orange" aria-hidden="true" />
                   <span>
-                    <span className="block font-medium text-text">Oficina</span>
+                    <span className="block font-semibold uppercase tracking-wider text-text">Oficina</span>
                     Santiago, Chile
                   </span>
                 </li>
               </ul>
             </div>
 
-            <div className="card p-6">
-              <h2 className="text-sm font-semibold uppercase tracking-wide text-text-muted">
-                Horario
-              </h2>
-              <p className="mt-3 text-sm text-text-muted">
-                Lun a vie: 9:00 — 19:00<br />
-                Sáb: 10:00 — 14:00
+            <div className="card overflow-hidden">
+              <div className="border-b border-bg-border bg-bg-card p-5">
+                <h2 className="h-display text-xl">Horario</h2>
+              </div>
+              <p className="p-5 font-mono text-sm text-text-muted">
+                Lun a Vie · 9:00 — 19:00<br />
+                Sáb · 10:00 — 14:00
               </p>
             </div>
           </aside>

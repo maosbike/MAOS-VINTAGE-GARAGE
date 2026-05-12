@@ -4,6 +4,7 @@ import { ShieldCheck, Eye, Wrench, ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo.jsx';
 import Hero from '../components/Hero.jsx';
 import Calculadora from '../components/Calculadora.jsx';
+import CheckerStrip from '../components/CheckerStrip.jsx';
 
 const VALUE_PROPS = [
   {
@@ -31,9 +32,9 @@ export default function HomePage() {
 
       <section className="section">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="eyebrow">Por qué MaosCars</p>
-          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
-            La forma fácil y segura de importar un clásico
+          <p className="eyebrow">Por qué Maos Vintage Garage</p>
+          <h2 className="h-display mt-3 text-[clamp(2rem,6vw,4rem)]">
+            La forma fácil y segura<br />de importar un clásico
           </h2>
           <p className="mt-4 text-text-muted">
             Hacemos lo que nadie quiere hacer: buscar, inspeccionar, embarcar y
@@ -42,44 +43,56 @@ export default function HomePage() {
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {VALUE_PROPS.map(({ icon: Icon, title, text }) => (
+          {VALUE_PROPS.map(({ icon: Icon, title, text }, i) => (
             <motion.div
               key={title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.5 }}
-              className="card p-6"
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="card relative overflow-hidden p-6 hover:border-brand-orange/40"
             >
-              <span className="mb-4 inline-flex rounded-md border border-bg-border bg-bg p-2 text-brand-orange">
-                <Icon size={22} aria-hidden="true" />
+              <span className="mb-4 inline-flex rounded-md border border-bg-border bg-bg p-3 text-brand-orange">
+                <Icon size={24} aria-hidden="true" />
               </span>
-              <h3 className="text-lg font-semibold">{title}</h3>
+              <h3 className="h-display text-2xl text-white">{title}</h3>
               <p className="mt-2 text-sm text-text-muted">{text}</p>
+              <div className="absolute -right-2 -top-2 h-10 w-10 checker-sm rounded-sm opacity-30" aria-hidden="true" />
             </motion.div>
           ))}
         </div>
       </section>
 
+      <CheckerStrip height="h-3" />
+
       <Calculadora variant="home" />
 
+      <CheckerStrip height="h-3" />
+
       <section className="section">
-        <div className="card flex flex-col items-start gap-4 p-8 sm:flex-row sm:items-center sm:justify-between">
-          <div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="card relative flex flex-col items-start gap-4 overflow-hidden p-8 sm:flex-row sm:items-center sm:justify-between"
+        >
+          <div className="absolute inset-y-0 right-0 w-32 checker opacity-10" aria-hidden="true" />
+          <div className="relative">
             <p className="eyebrow">¿Listo para empezar?</p>
-            <h2 className="mt-2 text-2xl font-bold sm:text-3xl">
-              Conversemos sobre tu auto ideal
+            <h2 className="h-display mt-2 text-3xl sm:text-4xl">
+              Conversemos sobre<br />tu auto ideal
             </h2>
             <p className="mt-2 max-w-xl text-text-muted">
               Cuéntanos qué buscas y en menos de 7 días te mostramos 3
               candidatos reales.
             </p>
           </div>
-          <Link to="/contacto" className="btn-primary shrink-0">
+          <Link to="/contacto" className="btn-primary relative shrink-0">
             Empezar
             <ArrowRight size={18} aria-hidden="true" />
           </Link>
-        </div>
+        </motion.div>
       </section>
     </>
   );

@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { MessageCircle } from 'lucide-react';
+import Logo from './Logo.jsx';
+import CheckerStrip from './CheckerStrip.jsx';
 
 function InstagramIcon(props) {
   return (
@@ -53,13 +55,11 @@ const QUICK = [
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-bg-border bg-bg">
+    <footer className="bg-bg">
+      <CheckerStrip height="h-3" />
       <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-4 lg:px-8">
         <div className="space-y-3">
-          <Link to="/" className="flex items-center gap-1 font-extrabold">
-            <span className="text-xl">MAOS</span>
-            <span className="text-xl text-brand-orange">CARS</span>
-          </Link>
+          <Logo className="h-12" />
           <p className="text-sm text-text-muted">
             Importación bajo pedido de autos clásicos desde USA y Alemania a Chile.
             Transparencia total, sin sorpresas.
@@ -67,7 +67,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-text-muted">
+          <h4 className="mb-3 text-xs font-bold uppercase tracking-[0.25em] text-brand-orange">
             Navegación
           </h4>
           <ul className="space-y-2">
@@ -75,7 +75,7 @@ export default function Footer() {
               <li key={q.to}>
                 <Link
                   to={q.to}
-                  className="text-sm text-text-muted hover:text-brand-orange"
+                  className="text-sm text-text-muted transition-colors hover:text-brand-orange"
                 >
                   {q.label}
                 </Link>
@@ -85,7 +85,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-text-muted">
+          <h4 className="mb-3 text-xs font-bold uppercase tracking-[0.25em] text-brand-orange">
             Síguenos
           </h4>
           <ul className="flex gap-3">
@@ -94,7 +94,7 @@ export default function Footer() {
                 href="https://www.instagram.com/"
                 target="_blank"
                 rel="noreferrer noopener"
-                aria-label="Instagram MaosCars"
+                aria-label="Instagram Maos Vintage Garage"
                 className="rounded-md border border-bg-border p-2 text-text-muted transition-colors hover:border-brand-orange hover:text-brand-orange"
               >
                 <InstagramIcon />
@@ -105,7 +105,7 @@ export default function Footer() {
                 href="https://www.youtube.com/"
                 target="_blank"
                 rel="noreferrer noopener"
-                aria-label="YouTube MaosCars"
+                aria-label="YouTube Maos Vintage Garage"
                 className="rounded-md border border-bg-border p-2 text-text-muted transition-colors hover:border-brand-orange hover:text-brand-orange"
               >
                 <YoutubeIcon />
@@ -116,7 +116,7 @@ export default function Footer() {
                 href="https://wa.me/56900000000"
                 target="_blank"
                 rel="noreferrer noopener"
-                aria-label="WhatsApp MaosCars"
+                aria-label="WhatsApp Maos Vintage Garage"
                 className="rounded-md border border-bg-border p-2 text-text-muted transition-colors hover:border-brand-orange hover:text-brand-orange"
               >
                 <MessageCircle size={18} aria-hidden="true" />
@@ -126,7 +126,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="mb-3 text-sm font-semibold uppercase tracking-wide text-text-muted">
+          <h4 className="mb-3 text-xs font-bold uppercase tracking-[0.25em] text-brand-orange">
             Grupo
           </h4>
           <p className="text-sm text-text-muted">
@@ -145,7 +145,7 @@ export default function Footer() {
       </div>
       <div className="border-t border-bg-border">
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-2 px-4 py-4 text-xs text-text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-          <p>© {year} MaosCars. Todos los derechos reservados.</p>
+          <p>© {year} Maos Vintage Garage. Todos los derechos reservados.</p>
           <p>Santiago, Chile</p>
         </div>
       </div>

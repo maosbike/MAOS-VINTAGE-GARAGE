@@ -8,8 +8,10 @@
     "estimatedClp": 42000000,
     "leadTimeDays": 95,
     "status": "available",
-    "image": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=900&q=80",
-    "tag": "Restaurado"
+    "image": "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=900&q=80",
+    "tag": "Restaurado",
+    "accentFrom": "#7a1f1f",
+    "accentTo": "#1a0a0a"
   },
   {
     "id": "porsche-911-72",
@@ -20,8 +22,10 @@
     "estimatedClp": 78000000,
     "leadTimeDays": 110,
     "status": "available",
-    "image": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80",
-    "tag": "Matching numbers"
+    "image": "https://images.unsplash.com/photo-1611821064430-0ce8404d2076?auto=format&fit=crop&w=900&q=80",
+    "tag": "Matching numbers",
+    "accentFrom": "#1a3550",
+    "accentTo": "#0a0a0a"
   },
   {
     "id": "vw-beetle-65",
@@ -32,8 +36,10 @@
     "estimatedClp": 14500000,
     "leadTimeDays": 90,
     "status": "available",
-    "image": "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=900&q=80",
-    "tag": "Original"
+    "image": "https://images.unsplash.com/photo-1530908295418-a12e326966ba?auto=format&fit=crop&w=900&q=80",
+    "tag": "Original",
+    "accentFrom": "#4d5b3a",
+    "accentTo": "#0a0a0a"
   },
   {
     "id": "chevy-c10-72",
@@ -44,8 +50,10 @@
     "estimatedClp": 36000000,
     "leadTimeDays": 100,
     "status": "available",
-    "image": "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=900&q=80",
-    "tag": "Resto-mod"
+    "image": "https://images.unsplash.com/photo-1568844293986-8d0400bd4745?auto=format&fit=crop&w=900&q=80",
+    "tag": "Resto-mod",
+    "accentFrom": "#5a3a1a",
+    "accentTo": "#0a0a0a"
   },
   {
     "id": "mb-280sl-70",
@@ -56,8 +64,10 @@
     "estimatedClp": 96000000,
     "leadTimeDays": 115,
     "status": "available",
-    "image": "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=900&q=80",
-    "tag": "Convertible"
+    "image": "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=900&q=80",
+    "tag": "Convertible",
+    "accentFrom": "#2a2a2a",
+    "accentTo": "#0a0a0a"
   },
   {
     "id": "camaro-69",
@@ -69,7 +79,9 @@
     "leadTimeDays": 95,
     "status": "available",
     "image": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=900&q=80",
-    "tag": "V8 396"
+    "tag": "V8 396",
+    "accentFrom": "#5e2b1a",
+    "accentTo": "#0a0a0a"
   },
   {
     "id": "bmw-2002-74",
@@ -80,8 +92,10 @@
     "estimatedClp": 32000000,
     "leadTimeDays": 105,
     "status": "search-active",
-    "image": "https://images.unsplash.com/photo-1610465299996-30f240ac2b1c?auto=format&fit=crop&w=900&q=80",
-    "tag": "Búsqueda activa"
+    "image": "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=900&q=80",
+    "tag": "Búsqueda activa",
+    "accentFrom": "#3a3a4d",
+    "accentTo": "#0a0a0a"
   },
   {
     "id": "porsche-356-63",
@@ -93,7 +107,9 @@
     "leadTimeDays": 120,
     "status": "search-active",
     "image": "https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=900&q=80",
-    "tag": "Búsqueda activa"
+    "tag": "Búsqueda activa",
+    "accentFrom": "#1a1a1a",
+    "accentTo": "#000000"
   },
   {
     "id": "ford-bronco-75",
@@ -104,8 +120,10 @@
     "estimatedClp": 64000000,
     "leadTimeDays": 100,
     "status": "search-active",
-    "image": "https://images.unsplash.com/photo-1599256871679-d7c2cbf18e84?auto=format&fit=crop&w=900&q=80",
-    "tag": "Búsqueda activa"
+    "image": "https://images.unsplash.com/photo-1597007030739-6d2e7172ee72?auto=format&fit=crop&w=900&q=80",
+    "tag": "Búsqueda activa",
+    "accentFrom": "#2c5530",
+    "accentTo": "#0a0a0a"
   },
   {
     "id": "merc-190sl-59",
@@ -117,7 +135,9 @@
     "leadTimeDays": 115,
     "status": "search-active",
     "image": "https://images.unsplash.com/photo-1591293836027-e05b48473b67?auto=format&fit=crop&w=900&q=80",
-    "tag": "Búsqueda activa"
+    "tag": "Búsqueda activa",
+    "accentFrom": "#3a3a3a",
+    "accentTo": "#0a0a0a"
   },
   {
     "id": "chevy-corvette-67",
@@ -129,7 +149,9 @@
     "leadTimeDays": 100,
     "status": "sold",
     "image": "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=900&q=80",
-    "tag": "Importado vendido"
+    "tag": "Importado vendido",
+    "accentFrom": "#4a1a1a",
+    "accentTo": "#0a0a0a"
   },
   {
     "id": "vw-bus-70",
@@ -141,6 +163,8 @@
     "leadTimeDays": 110,
     "status": "sold",
     "image": "https://images.unsplash.com/photo-1543465077-db45d34b88a5?auto=format&fit=crop&w=900&q=80",
-    "tag": "Importado vendido"
+    "tag": "Importado vendido",
+    "accentFrom": "#3a5566",
+    "accentTo": "#0a0a0a"
   }
 ]

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -14,7 +14,7 @@
   #root {
     background-color: #0a0a0a;
     color: #ffffff;
-    font-family: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
@@ -22,6 +22,7 @@
 
   body {
     margin: 0;
+    text-rendering: optimizeLegibility;
   }
 
   *,
@@ -34,8 +35,12 @@
   h2,
   h3,
   h4 {
+    font-family: 'Bebas Neue', 'Oswald', sans-serif;
     color: #ffffff;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 0.95;
+    font-weight: 400;
   }
 
   a {
@@ -47,19 +52,24 @@
     background-color: #F28100;
     color: #0a0a0a;
   }
+
+  /* Smooth fluid font sizing for mobile-first */
+  html {
+    font-size: 16px;
+  }
 }
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-md bg-brand-orange px-6 py-3 font-semibold text-black transition-all hover:brightness-110 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2 focus:ring-offset-bg disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-brand-orange px-6 py-3 font-semibold uppercase tracking-wider text-black transition-all hover:brightness-110 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2 focus:ring-offset-bg disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98];
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-md border border-bg-border bg-transparent px-6 py-3 font-semibold text-text transition-all hover:border-brand-orange hover:text-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2 focus:ring-offset-bg;
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-bg-border bg-transparent px-6 py-3 font-semibold uppercase tracking-wider text-text transition-all hover:border-brand-orange hover:text-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2 focus:ring-offset-bg active:scale-[0.98];
   }
 
   .card {
-    @apply rounded-lg border border-bg-border bg-bg-card transition-colors;
+    @apply rounded-lg border border-bg-border bg-bg-card transition-all;
   }
 
   .input-base {
@@ -67,11 +77,38 @@
   }
 
   .section {
-    @apply mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24;
+    @apply mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8 lg:py-24;
   }
 
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.2em] text-brand-orange;
+    @apply font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-brand-orange;
+  }
+
+  .h-display {
+    @apply font-display uppercase leading-[0.95] tracking-display;
+  }
+
+  /* Racing checkered flag pattern — used as horizontal strip */
+  .checker {
+    background-image:
+      linear-gradient(45deg, #fff 25%, transparent 25%),
+      linear-gradient(-45deg, #fff 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #fff 75%),
+      linear-gradient(-45deg, transparent 75%, #fff 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+    background-color: #000;
+  }
+
+  .checker-sm {
+    background-image:
+      linear-gradient(45deg, #fff 25%, transparent 25%),
+      linear-gradient(-45deg, #fff 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #fff 75%),
+      linear-gradient(-45deg, transparent 75%, #fff 75%);
+    background-size: 10px 10px;
+    background-position: 0 0, 0 5px, 5px -5px, -5px 0;
+    background-color: #000;
   }
 }
 
@@ -89,4 +126,14 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #F28100;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }

@@ -120,8 +120,8 @@ export default function CatalogoPage() {
       <div className="section">
         <div className="mb-10">
           <p className="eyebrow">Catálogo</p>
-          <h1 className="mt-2 text-3xl font-bold sm:text-4xl">
-            Autos disponibles y búsquedas activas
+          <h1 className="h-display mt-2 text-[clamp(2.2rem,7vw,4.5rem)]">
+            Autos disponibles<br />y búsquedas activas
           </h1>
           <p className="mt-3 max-w-2xl text-text-muted">
             Cada auto está pre-evaluado por nuestro equipo. Si encuentras uno
@@ -131,7 +131,7 @@ export default function CatalogoPage() {
 
         {searching.length > 0 && (
           <section className="mb-12">
-            <h2 className="mb-4 text-xl font-semibold">
+            <h2 className="h-display mb-4 text-2xl sm:text-3xl">
               Clientes están buscando…
             </h2>
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -158,10 +158,8 @@ export default function CatalogoPage() {
 
         <div className="mt-6 grid gap-8 lg:grid-cols-[260px_1fr]">
           <aside className="hidden lg:block">
-            <div className="card sticky top-24 p-5">
-              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-text-muted">
-                Filtros
-              </h3>
+            <div className="card sticky top-28 p-5">
+              <h3 className="h-display mb-4 text-xl">Filtros</h3>
               {filtersUI}
             </div>
           </aside>
