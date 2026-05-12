@@ -33,7 +33,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="lg:col-span-7"
+          className="min-w-0 lg:col-span-7"
         >
           <p className="eyebrow">Importación bajo pedido a Chile</p>
 
@@ -77,7 +77,7 @@ export default function Hero() {
               <span className="shrink-0 font-mono text-[10px] font-bold uppercase tracking-widest2 text-ink-faint">
                 Desde
               </span>
-              <div className="relative flex-1 overflow-hidden">
+              <div className="relative min-w-0 flex-1 overflow-hidden">
                 <motion.div
                   className="flex items-center gap-8 whitespace-nowrap"
                   animate={{ x: ['0%', '-50%'] }}
