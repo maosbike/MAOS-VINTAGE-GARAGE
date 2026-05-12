@@ -17,7 +17,7 @@ export default function CasosPage() {
       <div className="section">
         <div className="border-b border-canvas-line pb-6">
           <p className="eyebrow">Casos · Importaciones cerradas</p>
-          <h1 className="mt-5 font-display text-[clamp(2.6rem,8vw,6rem)] uppercase tracking-wider2 leading-[0.9]">
+          <h1 className="mt-5 font-display text-[clamp(2.2rem,9vw,5.5rem)] uppercase leading-[0.9] tracking-tight sm:tracking-wider2">
             Historias reales,<br />
             <em className="font-serif italic font-normal normal-case tracking-normal text-cognac">números reales.</em>
           </h1>

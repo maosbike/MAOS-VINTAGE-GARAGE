@@ -14,7 +14,7 @@ export default function ContactoPage() {
         <div className="grid gap-10 lg:grid-cols-[1fr_360px]">
           <div>
             <p className="eyebrow">Contacto · Empezar conversación</p>
-            <h1 className="mt-5 font-display text-[clamp(2.6rem,8vw,6rem)] uppercase tracking-wider2 leading-[0.9]">
+            <h1 className="mt-5 font-display text-[clamp(2.2rem,9vw,5.5rem)] uppercase leading-[0.9] tracking-tight sm:tracking-wider2">
               Cuéntanos qué<br />
               <em className="font-serif italic font-normal normal-case tracking-normal text-cognac">auto sueñas.</em>
             </h1>

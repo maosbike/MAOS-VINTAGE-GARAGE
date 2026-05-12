@@ -44,7 +44,7 @@ export default function Calculadora({ variant = 'page' }) {
         <p className="eyebrow">Calculadora · Costo final</p>
         <h2
           id="calc-heading"
-          className="mt-5 font-display text-[clamp(2.4rem,7vw,5rem)] uppercase leading-[0.92] tracking-wider2"
+          className="mt-5 font-display text-[clamp(2rem,8vw,5rem)] uppercase leading-[0.92] tracking-tight sm:tracking-wider2"
         >
           Estima tu costo<br />
           <em className="font-serif italic font-normal normal-case tracking-normal text-cognac">en tiempo real</em>

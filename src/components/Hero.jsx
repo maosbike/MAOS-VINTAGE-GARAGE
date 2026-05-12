@@ -39,7 +39,7 @@ export default function Hero() {
 
           <h1
             id="hero-heading"
-            className="mt-8 text-[clamp(2.8rem,9vw,7rem)] font-display uppercase leading-[0.88] tracking-wider2 text-ink"
+            className="mt-6 break-words text-[clamp(2.2rem,10vw,6.5rem)] font-display uppercase leading-[0.9] text-ink tracking-tight sm:mt-8 sm:leading-[0.88] sm:tracking-wider2"
           >
             <span className="block">El clásico</span>
             <span className="block">
@@ -50,7 +50,7 @@ export default function Hero() {
             </span>
           </h1>
 
-          <p className="mt-8 max-w-xl font-serif text-2xl italic leading-snug text-ink-soft sm:text-3xl">
+          <p className="mt-6 max-w-xl font-serif text-xl italic leading-snug text-ink-soft sm:mt-8 sm:text-2xl lg:text-3xl">
             Lo buscamos, lo inspeccionamos, lo embarcamos y te lo entregamos. Tu rol: elegir.
           </p>
 
@@ -102,13 +102,13 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative lg:col-span-5"
+          className="relative mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none"
         >
           {/* Corner checker accents */}
-          <div className="absolute -left-2 -top-2 z-10 h-10 w-10 checker text-ink/70 bg-canvas-raised" aria-hidden="true" />
-          <div className="absolute -bottom-2 -right-2 z-10 h-10 w-10 checker text-ink/70 bg-canvas-raised" aria-hidden="true" />
+          <div className="absolute -left-2 -top-2 z-10 h-8 w-8 checker text-ink/70 bg-canvas-raised sm:h-10 sm:w-10" aria-hidden="true" />
+          <div className="absolute -bottom-2 -right-2 z-10 h-8 w-8 checker text-ink/70 bg-canvas-raised sm:h-10 sm:w-10" aria-hidden="true" />
 
-          <div className="relative aspect-[4/5] overflow-hidden border border-canvas-line shadow-plate">
+          <div className="relative aspect-[4/3] overflow-hidden border border-canvas-line shadow-plate sm:aspect-[4/3] lg:aspect-[4/5]">
             <CarImage
               src="https://commons.wikimedia.org/wiki/Special:FilePath/1969%20red%20Chevrolet%20Camaro%20SS%20front.JPG?width=1400"
               brand="Chevrolet"
@@ -118,14 +118,14 @@ export default function Hero() {
               className="absolute inset-0"
             />
             {/* Editorial caption */}
-            <div className="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-6">
+            <div className="absolute inset-x-0 bottom-0 z-10 p-4 sm:p-6">
               <p className="font-mono text-[10px] uppercase tracking-widest2 text-brass">
                 Portada · MVG-006
               </p>
-              <p className="mt-1 font-display text-3xl leading-none text-ink sm:text-4xl">
+              <p className="mt-1 font-display text-2xl leading-none text-ink sm:text-3xl lg:text-4xl">
                 Chevrolet Camaro SS
               </p>
-              <p className="font-serif text-base italic text-ink-soft">
+              <p className="font-serif text-sm italic text-ink-soft sm:text-base">
                 1969 · Disponible
               </p>
             </div>
@@ -136,7 +136,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.7 }}
-            className="absolute -bottom-6 -left-6 hidden border border-cognac/40 bg-canvas-raised px-4 py-3 shadow-plate sm:block"
+            className="absolute -bottom-6 -left-4 hidden border border-cognac/40 bg-canvas-raised px-4 py-3 shadow-plate lg:block"
           >
             <p className="font-mono text-[10px] uppercase tracking-widest2 text-cognac">Tiempo promedio</p>
             <p className="font-display text-3xl text-ink">75–120 días</p>
