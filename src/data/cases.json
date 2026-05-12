@@ -1,29 +1,35 @@
 [
   {
     "id": "case-mustang-fastback",
+    "lot": "MVG-CASE-01",
     "brand": "Ford",
-    "model": "Mustang Fastback 1967",
-    "image": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=900&q=80",
+    "model": "Mustang Fastback",
+    "year": 1967,
+    "originLabel": "Carolina del Norte, USA",
     "daysToDeliver": 92,
     "totalClp": 41800000,
-    "summary": "Importado desde Carolina del Norte, restaurado original. Cliente recibió en Santiago en 92 días."
+    "summary": "Subasta privada en Carolina del Norte. Restauración original verificada con Marti Report. Cliente recibió en Santiago en 92 días."
   },
   {
     "id": "case-porsche-911t",
+    "lot": "MVG-CASE-02",
     "brand": "Porsche",
-    "model": "911 T 1972",
-    "image": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80",
+    "model": "911 T",
+    "year": 1972,
+    "originLabel": "Stuttgart, Alemania",
     "daysToDeliver": 108,
     "totalClp": 78500000,
-    "summary": "Subasta en Stuttgart, matching numbers verificados con Porsche Klassik."
+    "summary": "Subasta Klassik en Stuttgart. Matching numbers verificados con Porsche AG. Inspección PPI con 120 fotos y video."
   },
   {
     "id": "case-vw-bus",
+    "lot": "MVG-CASE-03",
     "brand": "Volkswagen",
-    "model": "Type 2 Bus 1970",
-    "image": "https://images.unsplash.com/photo-1543465077-db45d34b88a5?auto=format&fit=crop&w=900&q=80",
+    "model": "Type 2 Bus",
+    "year": 1970,
+    "originLabel": "Hamburgo, Alemania",
     "daysToDeliver": 115,
     "totalClp": 28200000,
-    "summary": "Encontrado en Hamburgo. Inspección PPI completa, embarque en container 40'."
+    "summary": "Encontrado por nuestro hunter en Hamburgo. Inspección PPI completa, embarque en container 40' compartido."
   }
 ]

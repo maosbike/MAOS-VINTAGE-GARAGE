@@ -1,22 +1,10 @@
 import { Link } from 'react-router-dom';
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, Mail, MapPin } from 'lucide-react';
 import Logo from './Logo.jsx';
-import CheckerStrip from './CheckerStrip.jsx';
 
 function InstagramIcon(props) {
   return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
       <rect x="2" y="2" width="20" height="20" rx="5" />
       <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
       <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
@@ -26,18 +14,7 @@ function InstagramIcon(props) {
 
 function YoutubeIcon(props) {
   return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
       <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
       <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
     </svg>
@@ -55,19 +32,23 @@ const QUICK = [
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="bg-bg">
-      <CheckerStrip height="h-3" />
-      <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-4 lg:px-8">
-        <div className="space-y-3">
-          <Logo className="h-12" />
-          <p className="text-sm text-text-muted">
-            Importación bajo pedido de autos clásicos desde USA y Alemania a Chile.
-            Transparencia total, sin sorpresas.
+    <footer className="bg-paper-deep text-paper-light">
+      {/* Brass top rule */}
+      <div className="h-[3px] bg-gradient-to-r from-transparent via-brass to-transparent" />
+
+      <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-20">
+        <div className="space-y-5 lg:col-span-5">
+          <Logo className="h-16" />
+          <p className="max-w-sm font-serif text-lg italic leading-snug text-paper-light/80">
+            "Importación bajo pedido de autos clásicos desde USA y Alemania a Chile. Transparencia total, sin sorpresas."
+          </p>
+          <p className="font-mono text-[10px] uppercase tracking-widest2 text-brass">
+            EST. 2025 · Santiago, Chile
           </p>
         </div>
 
-        <div>
-          <h4 className="mb-3 text-xs font-bold uppercase tracking-[0.25em] text-brand-orange">
+        <div className="lg:col-span-3">
+          <h4 className="mb-4 font-mono text-[10px] font-bold uppercase tracking-widest2 text-brass">
             Navegación
           </h4>
           <ul className="space-y-2">
@@ -75,7 +56,7 @@ export default function Footer() {
               <li key={q.to}>
                 <Link
                   to={q.to}
-                  className="text-sm text-text-muted transition-colors hover:text-brand-orange"
+                  className="font-serif text-base text-paper-light/80 transition-colors hover:text-brass"
                 >
                   {q.label}
                 </Link>
@@ -84,69 +65,65 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div>
-          <h4 className="mb-3 text-xs font-bold uppercase tracking-[0.25em] text-brand-orange">
-            Síguenos
+        <div className="lg:col-span-2">
+          <h4 className="mb-4 font-mono text-[10px] font-bold uppercase tracking-widest2 text-brass">
+            Contacto
           </h4>
-          <ul className="flex gap-3">
+          <ul className="space-y-3 text-sm text-paper-light/80">
             <li>
-              <a
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label="Instagram Maos Vintage Garage"
-                className="rounded-md border border-bg-border p-2 text-text-muted transition-colors hover:border-brand-orange hover:text-brand-orange"
-              >
-                <InstagramIcon />
+              <a href="https://wa.me/56900000000" className="flex items-start gap-2 hover:text-brass" target="_blank" rel="noreferrer">
+                <MessageCircle size={14} className="mt-1 shrink-0" aria-hidden="true" />
+                <span className="font-mono text-xs">+56 9 0000 0000</span>
               </a>
             </li>
             <li>
-              <a
-                href="https://www.youtube.com/"
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label="YouTube Maos Vintage Garage"
-                className="rounded-md border border-bg-border p-2 text-text-muted transition-colors hover:border-brand-orange hover:text-brand-orange"
-              >
-                <YoutubeIcon />
+              <a href="mailto:hola@maoscars.cl" className="flex items-start gap-2 hover:text-brass">
+                <Mail size={14} className="mt-1 shrink-0" aria-hidden="true" />
+                <span className="font-mono text-xs">hola@maoscars.cl</span>
               </a>
             </li>
-            <li>
-              <a
-                href="https://wa.me/56900000000"
-                target="_blank"
-                rel="noreferrer noopener"
-                aria-label="WhatsApp Maos Vintage Garage"
-                className="rounded-md border border-bg-border p-2 text-text-muted transition-colors hover:border-brand-orange hover:text-brand-orange"
-              >
-                <MessageCircle size={18} aria-hidden="true" />
-              </a>
+            <li className="flex items-start gap-2">
+              <MapPin size={14} className="mt-1 shrink-0" aria-hidden="true" />
+              <span className="font-mono text-xs">Santiago, CL</span>
             </li>
           </ul>
         </div>
 
-        <div>
-          <h4 className="mb-3 text-xs font-bold uppercase tracking-[0.25em] text-brand-orange">
-            Grupo
+        <div className="lg:col-span-2">
+          <h4 className="mb-4 font-mono text-[10px] font-bold uppercase tracking-widest2 text-brass">
+            Síguenos
           </h4>
-          <p className="text-sm text-text-muted">
+          <ul className="flex gap-3">
+            <li>
+              <a href="https://www.instagram.com/" target="_blank" rel="noreferrer noopener" aria-label="Instagram" className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-paper-light/20 text-paper-light/70 transition-colors hover:border-brass hover:text-brass">
+                <InstagramIcon />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/" target="_blank" rel="noreferrer noopener" aria-label="YouTube" className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-paper-light/20 text-paper-light/70 transition-colors hover:border-brass hover:text-brass">
+                <YoutubeIcon />
+              </a>
+            </li>
+            <li>
+              <a href="https://wa.me/56900000000" target="_blank" rel="noreferrer noopener" aria-label="WhatsApp" className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-paper-light/20 text-paper-light/70 transition-colors hover:border-brass hover:text-brass">
+                <MessageCircle size={18} aria-hidden="true" />
+              </a>
+            </li>
+          </ul>
+          <p className="mt-6 text-xs text-paper-light/60">
             Una empresa del grupo{' '}
-            <a
-              href="https://maosbike.cl"
-              target="_blank"
-              rel="noreferrer noopener"
-              className="text-brand-orange hover:underline"
-            >
+            <a href="https://maosbike.cl" target="_blank" rel="noreferrer noopener" className="text-brass hover:underline">
               MaosBike
             </a>
             .
           </p>
         </div>
       </div>
-      <div className="border-t border-bg-border">
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-2 px-4 py-4 text-xs text-text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+
+      <div className="border-t border-paper-light/10">
+        <div className="mx-auto flex w-full max-w-7xl flex-col gap-2 px-4 py-5 font-mono text-[10px] uppercase tracking-widest2 text-paper-light/50 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
           <p>© {year} Maos Vintage Garage. Todos los derechos reservados.</p>
-          <p>Santiago, Chile</p>
+          <p>Diseñado con respeto a la mecánica clásica.</p>
         </div>
       </div>
     </footer>

@@ -1,27 +1,25 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Calculator, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Tooltip from './Tooltip.jsx';
 import Modal from './Modal.jsx';
 import LeadForm from './LeadForm.jsx';
-import CheckerStrip from './CheckerStrip.jsx';
 import useCountUp from '../hooks/useCountUp.js';
-import { calcImportCost } from '../utils/cost.js';
+import { calcImportCost, ORIGINS, ORIGIN_BY_CODE } from '../utils/cost.js';
 import { formatCLP, formatUSD } from '../utils/format.js';
 
-const CAR_TYPES = [
-  { value: 'classic', label: 'Clásico (≥50 años)', disabled: false },
-  { value: 'youngtimer', label: 'Clásico moderno (Próximamente)', disabled: true },
-  { value: 'new', label: 'Nuevo 0km (Próximamente)', disabled: true },
-];
-
 export default function Calculadora({ variant = 'page' }) {
-  const [carType, setCarType] = useState('classic');
   const [origin, setOrigin] = useState('USA');
   const [purchase, setPurchase] = useState(25000);
   const [fx, setFx] = useState(915);
   const [fta, setFta] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
+
+  // When origin changes, default the FTA toggle to that origin's default
+  useEffect(() => {
+    const def = ORIGIN_BY_CODE[origin];
+    if (def) setFta(def.fta);
+  }, [origin]);
 
   const result = useMemo(
     () =>
@@ -35,6 +33,7 @@ export default function Calculadora({ variant = 'page' }) {
   );
 
   const animatedTotal = useCountUp(result.totalCLP, 500);
+  const originDef = ORIGIN_BY_CODE[origin];
 
   return (
     <section
@@ -42,62 +41,52 @@ export default function Calculadora({ variant = 'page' }) {
       aria-labelledby="calc-heading"
       className={variant === 'home' ? 'section' : ''}
     >
-      <div className="mb-8">
-        <p className="eyebrow">Calculadora</p>
+      {/* Header */}
+      <div className="mb-10">
+        <p className="eyebrow">Calculadora · Ledger</p>
         <h2
           id="calc-heading"
-          className="h-display mt-2 text-[clamp(2rem,6vw,3.5rem)]"
+          className="h-display mt-4 text-[clamp(2.2rem,7vw,4.5rem)]"
         >
-          Estima tu costo de importación
+          Estima tu costo, al peso.
         </h2>
-        <p className="mt-3 max-w-2xl text-text-muted">
-          Calcula en tiempo real cuánto te costaría tu auto clásico puesto en
-          Santiago. Sin sorpresas — todos los costos visibles.
+        <p className="mt-3 max-w-2xl font-serif text-lg italic text-ink-soft">
+          Cada línea desglosada como un libro contable. Sin letra chica.
         </p>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-5">
-        {/* Inputs */}
-        <div className="card overflow-hidden lg:col-span-2">
-          <div className="border-b border-bg-border bg-bg-card p-5">
-            <h3 className="h-display text-2xl">Tu auto</h3>
+      <div className="grid gap-8 lg:grid-cols-5">
+        {/* INPUTS — left ledger */}
+        <div className="card-paper lg:col-span-2">
+          <div className="border-b border-ink-line bg-paper-dark/40 px-5 py-4">
+            <h3 className="font-display text-2xl font-bold text-ink">Tu pedido</h3>
+            <p className="font-mono text-[10px] uppercase tracking-widest2 text-ink-muted">
+              Sección A · Datos del vehículo
+            </p>
           </div>
-          <div className="space-y-4 p-5">
-            <Field label="Tipo de auto" htmlFor="ct">
+
+          <div className="space-y-5 p-5">
+            <Field label="País de origen" htmlFor="origin">
               <select
-                id="ct"
-                value={carType}
-                onChange={(e) => setCarType(e.target.value)}
-                className="input-base"
+                id="origin"
+                value={origin}
+                onChange={(e) => setOrigin(e.target.value)}
+                className="input-base font-serif text-base"
               >
-                {CAR_TYPES.map((t) => (
-                  <option key={t.value} value={t.value} disabled={t.disabled}>
-                    {t.label}
+                {ORIGINS.map((o) => (
+                  <option key={o.code} value={o.code}>
+                    {o.flag}  {o.label}
                   </option>
                 ))}
               </select>
-            </Field>
-
-            <Field label="País de origen" htmlFor="origin">
-              <div className="grid grid-cols-2 gap-2" role="radiogroup" aria-label="País de origen">
-                <OriginButton
-                  active={origin === 'USA'}
-                  onClick={() => setOrigin('USA')}
-                  flag="🇺🇸"
-                  label="USA"
-                />
-                <OriginButton
-                  active={origin === 'DE'}
-                  onClick={() => setOrigin('DE')}
-                  flag="🇩🇪"
-                  label="Alemania"
-                />
-              </div>
+              <p className="mt-1 font-mono text-[10px] text-ink-muted">
+                Flete estimado: USD {originDef?.freightUSD.toLocaleString('en-US')}
+              </p>
             </Field>
 
             <Field label="Precio de compra (USD)" htmlFor="price">
               <div className="relative">
-                <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 font-mono text-text-muted">
+                <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 font-mono text-ink-muted">
                   $
                 </span>
                 <input
@@ -108,7 +97,7 @@ export default function Calculadora({ variant = 'page' }) {
                   step={500}
                   value={purchase}
                   onChange={(e) => setPurchase(e.target.value)}
-                  className="input-base pl-8 text-lg font-mono"
+                  className="input-base pl-8 font-mono text-lg font-semibold"
                 />
               </div>
             </Field>
@@ -126,44 +115,45 @@ export default function Calculadora({ variant = 'page' }) {
               />
             </Field>
 
-            <label className="flex cursor-pointer items-start gap-3 rounded-md border border-bg-border bg-bg/40 p-3 text-sm text-text-muted transition-colors hover:border-brand-orange/40">
+            <label className="flex cursor-pointer items-start gap-3 rounded-sm border border-ink-line bg-paper p-3 text-sm transition-colors hover:border-oxblood">
               <input
                 type="checkbox"
                 checked={fta}
                 onChange={(e) => setFta(e.target.checked)}
-                className="mt-0.5 h-4 w-4 cursor-pointer accent-brand-orange"
+                className="mt-0.5 h-4 w-4 cursor-pointer accent-oxblood"
               />
-              <span>
-                Auto califica para TLC (arancel 0%){' '}
-                <Tooltip text="Los autos con TLC vigente con Chile (USA, UE) pagan 0% de arancel. Si tu auto no califica, paga 6%." />
+              <span className="text-ink-soft">
+                <span className="font-semibold text-ink">TLC vigente</span> · arancel 0%{' '}
+                <Tooltip text="Chile tiene TLC con USA, UE, UK, Japón, Canadá, Australia, Corea y otros. Si tu auto es de un país con TLC, paga 0% de arancel; si no, 6%." />
               </span>
             </label>
           </div>
         </div>
 
-        {/* Output */}
-        <div className="card overflow-hidden lg:col-span-3">
-          <div className="flex items-center justify-between border-b border-bg-border bg-bg-card p-5">
-            <h3 className="h-display text-2xl">Desglose estimado</h3>
-            <span className="rounded-full border border-bg-border px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-text-muted">
+        {/* OUTPUT — ledger right */}
+        <div className="card-paper lg:col-span-3">
+          <div className="flex items-center justify-between border-b border-ink-line bg-paper-dark/40 px-5 py-4">
+            <div>
+              <h3 className="font-display text-2xl font-bold text-ink">Desglose</h3>
+              <p className="font-mono text-[10px] uppercase tracking-widest2 text-ink-muted">
+                Sección B · Costos al detalle
+              </p>
+            </div>
+            <span className="rounded-sm border border-ink-line px-3 py-1 font-mono text-[10px] uppercase tracking-widest2 text-ink-muted">
               FX {fx}
             </span>
           </div>
 
-          <ul className="divide-y divide-bg-border px-5">
+          <ul className="divide-y divide-dashed divide-ink-line/60 px-5">
             <Line
               label="Precio de compra"
               value={formatUSD(result.purchaseUSD)}
               tooltip="Lo que pagas en USD al vendedor en origen."
             />
             <Line
-              label={`Flete marítimo (${origin === 'USA' ? 'USA' : 'Alemania'})`}
+              label={`Flete marítimo · ${originDef?.label}`}
               value={formatUSD(result.freightUSD)}
-              tooltip={
-                origin === 'USA'
-                  ? 'Flete RoRo/container desde puerto USA a San Antonio. ~USD 1.800.'
-                  : 'Flete desde Hamburgo/Bremerhaven a San Antonio. ~USD 3.000.'
-              }
+              tooltip={`Flete desde ${originDef?.label} a San Antonio (RoRo o container 40' compartido).`}
             />
             <Line
               label="Seguro tránsito (2%)"
@@ -181,14 +171,14 @@ export default function Calculadora({ variant = 'page' }) {
               value={formatUSD(result.tariffUSD)}
               tooltip={
                 fta
-                  ? 'Arancel 0% por TLC con USA o UE.'
-                  : 'Arancel general de 6% si el auto no califica para TLC.'
+                  ? 'Arancel 0% por TLC con el país de origen.'
+                  : 'Arancel general 6% (sin TLC vigente).'
               }
             />
             <Line
               label="IVA 19% sobre CIF + arancel"
               value={formatUSD(result.ivaUSD)}
-              tooltip="IVA chileno aplicado sobre el valor CIF más el arancel."
+              tooltip="IVA chileno sobre el valor CIF más el arancel."
             />
             <Line
               label="Costos en Chile"
@@ -201,48 +191,48 @@ export default function Calculadora({ variant = 'page' }) {
               highlight
             />
             <Line
-              label="Comisión Maos Vintage Garage (10%)"
+              label="Comisión MVG (10%)"
               value={formatCLP(result.commissionCLP)}
-              tooltip="Honorarios MVG: búsqueda, inspección, gestión y entrega."
+              tooltip="Honorarios Maos Vintage Garage: búsqueda, inspección, gestión y entrega."
             />
           </ul>
 
-          <div className="m-5 mt-4 overflow-hidden rounded-md border border-brand-orange/40 bg-brand-orange/10">
-            <CheckerStrip height="h-2" size="sm" />
-            <div className="p-4">
-              <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-                <span className="font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-brand-orange">
-                  Total final
-                </span>
-                <motion.span
-                  key={Math.round(animatedTotal / 100000)}
-                  initial={{ scale: 0.98, opacity: 0.7 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.2 }}
-                  className="h-display text-3xl text-white sm:text-4xl"
-                >
-                  {formatCLP(animatedTotal)}
-                </motion.span>
-              </div>
-              <p className="mt-1 font-mono text-[11px] text-text-muted">
+          {/* TOTAL — ribbon with brass + oxblood */}
+          <div className="m-5 mt-4 overflow-hidden rounded-sm border-2 border-oxblood bg-paper-deep text-paper-light">
+            <div className="flex items-center justify-between bg-oxblood px-4 py-2">
+              <span className="font-mono text-[10px] font-bold uppercase tracking-widest2 text-paper-light">
+                Total final · puesto en Santiago
+              </span>
+              <span className="font-mono text-[10px] uppercase tracking-widest2 text-brass-light">
+                {originDef?.flag} {originDef?.label}
+              </span>
+            </div>
+            <div className="px-5 py-5">
+              <motion.span
+                key={Math.round(animatedTotal / 100000)}
+                initial={{ opacity: 0.6 }}
+                animate={{ opacity: 1 }}
+                className="block font-display text-5xl font-bold text-paper-light sm:text-6xl"
+              >
+                {formatCLP(animatedTotal)}
+              </motion.span>
+              <p className="mt-2 font-mono text-xs text-brass-light">
                 ≈ {formatUSD(result.totalCLP / (Number(fx) || 1))} USD
               </p>
             </div>
           </div>
 
-          <div className="flex flex-col gap-3 border-t border-bg-border p-5 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-xs text-text-muted">
-              Estimación referencial. Costos finales se confirman con cotización
-              formal antes de firmar mandato.
+          <div className="flex flex-col gap-3 border-t border-ink-line p-5 sm:flex-row sm:items-center sm:justify-between">
+            <p className="max-w-md font-serif text-xs italic text-ink-muted">
+              Estimación referencial. Costo final se confirma con cotización formal antes de firmar mandato.
             </p>
             <button
               type="button"
               onClick={() => setModalOpen(true)}
-              className="btn-primary w-full text-sm sm:w-auto"
+              className="btn-primary w-full text-xs sm:w-auto"
             >
-              <Calculator size={18} aria-hidden="true" />
               Empezar pedido
-              <ArrowRight size={16} aria-hidden="true" />
+              <ArrowRight size={14} aria-hidden="true" />
             </button>
           </div>
         </div>
@@ -253,19 +243,19 @@ export default function Calculadora({ variant = 'page' }) {
         onClose={() => setModalOpen(false)}
         title="Empezar tu pedido"
       >
-        <p className="mb-4 text-sm text-text-muted">
+        <p className="mb-4 font-serif text-base italic text-ink-soft">
           Tu cotización estimada:{' '}
-          <strong className="text-text">{formatCLP(result.totalCLP)}</strong>{' '}
-          ({origin === 'USA' ? 'USA' : 'Alemania'}, USD{' '}
+          <strong className="not-italic text-oxblood">{formatCLP(result.totalCLP)}</strong>{' '}
+          ({originDef?.label}, USD{' '}
           {Number(purchase || 0).toLocaleString('en-US')} compra).
         </p>
         <LeadForm
           compact
           initialData={{
             message: `Cotización inicial: ${formatCLP(result.totalCLP)} (origen ${
-              origin === 'USA' ? 'USA' : 'Alemania'
+              originDef?.label
             }, precio compra USD ${Number(purchase || 0).toLocaleString('en-US')}).`,
-            origin: origin === 'USA' ? 'USA' : 'Alemania',
+            origin: originDef?.label,
           }}
         />
       </Modal>
@@ -278,7 +268,7 @@ function Field({ label, htmlFor, children }) {
     <div className="space-y-1.5">
       <label
         htmlFor={htmlFor}
-        className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-text-muted"
+        className="font-mono text-[10px] font-bold uppercase tracking-widest2 text-ink-muted"
       >
         {label}
       </label>
@@ -287,37 +277,18 @@ function Field({ label, htmlFor, children }) {
   );
 }
 
-function OriginButton({ active, onClick, flag, label }) {
-  return (
-    <button
-      type="button"
-      role="radio"
-      aria-checked={active}
-      onClick={onClick}
-      className={`flex items-center justify-center gap-2 rounded-md border px-3 py-3 text-sm font-semibold uppercase tracking-wider transition-all active:scale-[0.97] ${
-        active
-          ? 'border-brand-orange bg-brand-orange/10 text-brand-orange'
-          : 'border-bg-border bg-bg/40 text-text-muted hover:border-brand-orange/40 hover:text-text'
-      }`}
-    >
-      <span className="text-base" aria-hidden="true">{flag}</span>
-      {label}
-    </button>
-  );
-}
-
 function Line({ label, value, tooltip, highlight }) {
   return (
     <li
       className={`flex items-center justify-between gap-3 py-3 text-sm ${
-        highlight ? 'font-semibold text-text' : 'text-text-muted'
+        highlight ? 'font-semibold text-ink' : 'text-ink-soft'
       }`}
     >
-      <span className="flex items-center gap-2">
+      <span className="flex items-center gap-2 font-serif">
         {label}
         {tooltip && <Tooltip text={tooltip} />}
       </span>
-      <span className="font-mono text-text">{value}</span>
+      <span className="font-mono text-ink">{value}</span>
     </li>
   );
 }

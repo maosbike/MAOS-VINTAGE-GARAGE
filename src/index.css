@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,23 +6,29 @@
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   html,
   body,
   #root {
-    background-color: #0a0a0a;
-    color: #ffffff;
+    background-color: #efe5c7;
+    color: #1a1410;
     font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
   }
 
+  /* Subtle parchment grain over body */
   body {
     margin: 0;
     text-rendering: optimizeLegibility;
+    position: relative;
+    background-image:
+      radial-gradient(circle at 15% 10%, rgba(178, 91, 28, 0.06), transparent 40%),
+      radial-gradient(circle at 85% 90%, rgba(107, 31, 31, 0.06), transparent 40%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.10 0 0 0 0 0.07 0 0 0 0 0.05 0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   }
 
   *,
@@ -35,12 +41,11 @@
   h2,
   h3,
   h4 {
-    font-family: 'Bebas Neue', 'Oswald', sans-serif;
-    color: #ffffff;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    line-height: 0.95;
-    font-weight: 400;
+    font-family: 'Playfair Display', Georgia, serif;
+    color: #1a1410;
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -0.005em;
   }
 
   a {
@@ -49,83 +54,99 @@
   }
 
   ::selection {
-    background-color: #F28100;
-    color: #0a0a0a;
-  }
-
-  /* Smooth fluid font sizing for mobile-first */
-  html {
-    font-size: 16px;
+    background-color: #6b1f1f;
+    color: #f7efd5;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-md bg-brand-orange px-6 py-3 font-semibold uppercase tracking-wider text-black transition-all hover:brightness-110 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2 focus:ring-offset-bg disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 rounded-sm bg-oxblood px-6 py-3 font-mono text-xs font-semibold uppercase tracking-widest2 text-paper-light transition-all hover:bg-oxblood-dark hover:shadow-paper focus:outline-none focus:ring-2 focus:ring-oxblood focus:ring-offset-2 focus:ring-offset-paper disabled:opacity-50 disabled:cursor-not-allowed active:translate-y-px;
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-md border border-bg-border bg-transparent px-6 py-3 font-semibold uppercase tracking-wider text-text transition-all hover:border-brand-orange hover:text-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2 focus:ring-offset-bg active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 rounded-sm border-2 border-ink bg-transparent px-6 py-3 font-mono text-xs font-semibold uppercase tracking-widest2 text-ink transition-all hover:bg-ink hover:text-paper-light focus:outline-none focus:ring-2 focus:ring-ink focus:ring-offset-2 focus:ring-offset-paper active:translate-y-px;
   }
 
-  .card {
-    @apply rounded-lg border border-bg-border bg-bg-card transition-all;
+  .btn-brass {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm border border-brass-dark bg-brass px-6 py-3 font-mono text-xs font-semibold uppercase tracking-widest2 text-paper-deep transition-all hover:bg-brass-dark hover:text-paper-light;
+  }
+
+  .card-paper {
+    @apply relative rounded-sm border border-ink-line bg-paper-light shadow-paper;
+  }
+
+  .card-deep {
+    @apply relative rounded-sm border border-ink/30 bg-paper-deep text-paper-light shadow-paper;
   }
 
   .input-base {
-    @apply w-full rounded-md border border-bg-border bg-bg/60 px-4 py-3 text-text placeholder:text-text-muted focus:border-brand-orange focus:outline-none focus:ring-1 focus:ring-brand-orange;
+    @apply w-full rounded-sm border border-ink-line bg-paper-light/70 px-4 py-3 text-ink placeholder:text-ink-muted/60 focus:border-oxblood focus:outline-none focus:ring-1 focus:ring-oxblood;
   }
 
   .section {
     @apply mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8 lg:py-24;
   }
 
+  /* Editorial eyebrow with rule */
   .eyebrow {
-    @apply font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-brand-orange;
+    @apply inline-flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-widest2 text-oxblood;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply inline-block h-px w-8 bg-oxblood;
   }
 
   .h-display {
-    @apply font-display uppercase leading-[0.95] tracking-display;
+    @apply font-display font-bold leading-[1.02];
   }
 
-  /* Racing checkered flag pattern — used as horizontal strip */
-  .checker {
-    background-image:
-      linear-gradient(45deg, #fff 25%, transparent 25%),
-      linear-gradient(-45deg, #fff 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, #fff 75%),
-      linear-gradient(-45deg, transparent 75%, #fff 75%);
-    background-size: 16px 16px;
-    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
-    background-color: #000;
+  .h-poster {
+    @apply font-condensed uppercase tracking-wider2;
   }
 
-  .checker-sm {
+  /* Double rule used in editorial layouts */
+  .rule-double {
+    border-top: 1px solid #c9b88a;
+    border-bottom: 1px solid #c9b88a;
+    padding: 2px 0;
+    background-clip: padding-box;
+  }
+  .rule-double::after {
+    display: none;
+  }
+
+  /* Racing checker — small pattern for accents only */
+  .checker-flag {
     background-image:
-      linear-gradient(45deg, #fff 25%, transparent 25%),
-      linear-gradient(-45deg, #fff 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, #fff 75%),
-      linear-gradient(-45deg, transparent 75%, #fff 75%);
-    background-size: 10px 10px;
-    background-position: 0 0, 0 5px, 5px -5px, -5px 0;
-    background-color: #000;
+      linear-gradient(45deg, #1a1410 25%, transparent 25%),
+      linear-gradient(-45deg, #1a1410 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #1a1410 75%),
+      linear-gradient(-45deg, transparent 75%, #1a1410 75%);
+    background-size: 14px 14px;
+    background-position: 0 0, 0 7px, 7px -7px, -7px 0;
+    background-color: #f7efd5;
+  }
+
+  /* "Stamped" badge used on cards */
+  .stamp {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-oxblood/60 bg-paper-light px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest2 text-oxblood;
   }
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #efe5c7;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2a2a2a;
+  background: #c9b88a;
   border-radius: 6px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #F28100;
+  background: #6b1f1f;
 }
 
 @media (prefers-reduced-motion: reduce) {

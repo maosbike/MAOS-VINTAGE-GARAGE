@@ -28,16 +28,16 @@ export default function Modal({ open, onClose, title, children }) {
         type="button"
         aria-label="Cerrar modal"
         onClick={onClose}
-        className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+        className="absolute inset-0 bg-paper-deep/80 backdrop-blur-sm"
       />
-      <div className="relative z-10 w-full max-w-lg overflow-hidden rounded-lg border border-bg-border bg-bg-card shadow-2xl">
-        <div className="flex items-center justify-between border-b border-bg-border px-5 py-4">
-          <h2 className="text-lg font-semibold">{title}</h2>
+      <div className="card-paper relative z-10 w-full max-w-lg overflow-hidden">
+        <div className="flex items-center justify-between border-b border-ink-line bg-paper-dark/40 px-5 py-4">
+          <h2 className="font-display text-xl font-bold text-ink">{title}</h2>
           <button
             type="button"
             onClick={onClose}
             aria-label="Cerrar"
-            className="text-text-muted hover:text-text"
+            className="text-ink-muted hover:text-oxblood"
           >
             <X size={20} aria-hidden="true" />
           </button>

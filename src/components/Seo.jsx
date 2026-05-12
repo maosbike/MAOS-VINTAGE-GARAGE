@@ -7,11 +7,11 @@ export default function Seo({
   image,
 }) {
   const fullTitle = title
-    ? `${title} — MaosCars`
-    : 'MaosCars — Importación de autos clásicos desde USA y Alemania';
+    ? `${title} — Maos Vintage Garage`
+    : 'Maos Vintage Garage — Importación de autos clásicos a Chile';
   const desc =
     description ||
-    'Importación bajo pedido de autos clásicos desde USA y Alemania a Chile. Transparencia total, sin sorpresas.';
+    'Importación bajo pedido de autos clásicos desde USA, Europa, Japón, UK y más, a Chile. Transparencia total, sin sorpresas.';
   const url = `https://maoscars.cl${path}`;
   return (
     <Helmet>

@@ -12,7 +12,6 @@ import {
   KeyRound,
 } from 'lucide-react';
 import Seo from '../components/Seo.jsx';
-import CheckerStrip from '../components/CheckerStrip.jsx';
 import process from '../data/process.json';
 
 const ICONS = {
@@ -37,20 +36,18 @@ export default function ProcesoPage() {
         path="/proceso"
       />
       <div className="section">
-        <div className="max-w-3xl">
-          <p className="eyebrow">Proceso</p>
-          <h1 className="h-display mt-2 text-[clamp(2.2rem,7vw,4.5rem)]">
-            Cómo importamos<br />tu auto, paso a paso
+        <div className="border-b border-ink-line pb-6">
+          <p className="eyebrow">Proceso · Hoja de ruta</p>
+          <h1 className="h-display mt-4 text-[clamp(2.4rem,8vw,5.5rem)]">
+            Diez hitos.<br />
+            <em className="italic text-oxblood">Cero sorpresas.</em>
           </h1>
-          <p className="mt-3 text-text-muted">
-            10 hitos transparentes. Entre 75 y 120 días desde la primera
-            conversación hasta tu garage en Santiago.
+          <p className="mt-4 max-w-2xl font-serif text-lg italic text-ink-soft">
+            Entre 75 y 120 días desde la primera conversación hasta tu garage en Santiago.
           </p>
         </div>
 
-        <CheckerStrip height="h-2" size="sm" className="mt-10" />
-
-        <ol className="relative mt-10 space-y-8 border-l-2 border-bg-border pl-6 sm:pl-10">
+        <ol className="relative mt-12 space-y-10 border-l-2 border-ink-line pl-8 sm:pl-12">
           {process.map((p, i) => {
             const Icon = ICONS[p.icon] || ListChecks;
             return (
@@ -63,33 +60,29 @@ export default function ProcesoPage() {
                 className="relative"
               >
                 <motion.span
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  className="absolute -left-[34px] flex h-10 w-10 items-center justify-center rounded-full border-2 border-brand-orange/60 bg-bg text-brand-orange shadow-glow sm:-left-[54px] sm:h-12 sm:w-12"
+                  whileHover={{ scale: 1.08 }}
+                  className="absolute -left-[44px] flex h-11 w-11 items-center justify-center rounded-full border-2 border-oxblood bg-paper-light text-oxblood shadow-paper sm:-left-[64px] sm:h-12 sm:w-12"
                 >
                   <Icon size={18} aria-hidden="true" />
                 </motion.span>
-                <div className="card overflow-hidden hover:border-brand-orange/40">
-                  <div className="flex items-baseline justify-between gap-3 border-b border-bg-border bg-bg-card/60 px-5 py-3">
-                    <span className="h-display text-4xl text-brand-orange sm:text-5xl">
+                <div className="card-paper overflow-hidden">
+                  <div className="flex items-baseline justify-between gap-3 border-b border-dashed border-ink-line bg-paper-dark/30 px-5 py-3">
+                    <span className="font-condensed text-5xl font-normal leading-none text-cognac sm:text-6xl">
                       {String(p.step).padStart(2, '0')}
                     </span>
-                    <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-text-muted">
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-widest2 text-ink-muted">
                       {p.day}
                     </span>
                   </div>
                   <div className="p-5">
-                    <h3 className="h-display text-2xl text-white">{p.title}</h3>
-                    <p className="mt-2 text-sm text-text-muted">
-                      {p.description}
-                    </p>
+                    <h3 className="font-display text-2xl font-bold text-ink">{p.title}</h3>
+                    <p className="mt-2 font-serif text-base text-ink-soft">{p.description}</p>
                   </div>
                 </div>
               </motion.li>
             );
           })}
         </ol>
-
-        <CheckerStrip height="h-2" size="sm" className="mt-12" animated />
       </div>
     </>
   );

@@ -6,10 +6,20 @@ const BUDGETS = [
   '25 – 40 millones CLP',
   '40 – 60 millones CLP',
   '60 – 100 millones CLP',
-  'Más de 100 millones CLP',
+  '100 – 200 millones CLP',
+  'Más de 200 millones CLP',
 ];
 
-const ORIGINS = ['USA', 'Alemania', 'Sin preferencia'];
+const ORIGINS = [
+  'Estados Unidos',
+  'Alemania / Europa',
+  'Reino Unido',
+  'Japón',
+  'Canadá',
+  'Australia',
+  'Otro país',
+  'Sin preferencia',
+];
 
 export default function LeadForm({ initialData, compact = false }) {
   const [form, setForm] = useState({
@@ -18,7 +28,7 @@ export default function LeadForm({ initialData, compact = false }) {
     phone: '',
     target: '',
     budget: BUDGETS[1],
-    origin: ORIGINS[2],
+    origin: ORIGINS[7],
     message: '',
     ...initialData,
   });
@@ -29,17 +39,16 @@ export default function LeadForm({ initialData, compact = false }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // Stub: replace with API call (Railway + PostgreSQL) later
-    console.log('[MaosCars lead]', form);
+    console.log('[MVG lead]', form);
     setSent(true);
   };
 
   if (sent) {
     return (
-      <div className="flex flex-col items-center gap-3 rounded-md border border-bg-border bg-bg/40 px-4 py-8 text-center">
-        <CheckCircle2 size={36} className="text-brand-orange" aria-hidden="true" />
-        <h3 className="text-lg font-semibold">¡Recibido!</h3>
-        <p className="text-sm text-text-muted">
+      <div className="flex flex-col items-center gap-3 rounded-sm border-2 border-dashed border-racing-green bg-paper px-4 py-10 text-center">
+        <CheckCircle2 size={40} className="text-racing-green" aria-hidden="true" />
+        <h3 className="font-display text-2xl font-bold text-ink">¡Recibido!</h3>
+        <p className="font-serif text-base italic text-ink-soft">
           Te contactaremos dentro de 24 horas hábiles con los próximos pasos.
         </p>
       </div>
@@ -48,10 +57,7 @@ export default function LeadForm({ initialData, compact = false }) {
 
   return (
     <form onSubmit={onSubmit} className={`grid gap-4 ${compact ? '' : 'sm:grid-cols-2'}`}>
-      <div className="space-y-1">
-        <label htmlFor="lead-name" className="text-xs font-medium uppercase tracking-wide text-text-muted">
-          Nombre
-        </label>
+      <Field id="lead-name" label="Nombre">
         <input
           id="lead-name"
           required
@@ -60,11 +66,8 @@ export default function LeadForm({ initialData, compact = false }) {
           onChange={update('name')}
           className="input-base"
         />
-      </div>
-      <div className="space-y-1">
-        <label htmlFor="lead-email" className="text-xs font-medium uppercase tracking-wide text-text-muted">
-          Email
-        </label>
+      </Field>
+      <Field id="lead-email" label="Email">
         <input
           id="lead-email"
           type="email"
@@ -74,11 +77,8 @@ export default function LeadForm({ initialData, compact = false }) {
           onChange={update('email')}
           className="input-base"
         />
-      </div>
-      <div className="space-y-1">
-        <label htmlFor="lead-phone" className="text-xs font-medium uppercase tracking-wide text-text-muted">
-          Teléfono
-        </label>
+      </Field>
+      <Field id="lead-phone" label="Teléfono">
         <input
           id="lead-phone"
           type="tel"
@@ -88,54 +88,28 @@ export default function LeadForm({ initialData, compact = false }) {
           className="input-base"
           placeholder="+56 9 ..."
         />
-      </div>
-      <div className="space-y-1">
-        <label htmlFor="lead-budget" className="text-xs font-medium uppercase tracking-wide text-text-muted">
-          Presupuesto
-        </label>
-        <select
-          id="lead-budget"
-          value={form.budget}
-          onChange={update('budget')}
-          className="input-base"
-        >
-          {BUDGETS.map((b) => (
-            <option key={b} value={b}>{b}</option>
-          ))}
+      </Field>
+      <Field id="lead-budget" label="Presupuesto">
+        <select id="lead-budget" value={form.budget} onChange={update('budget')} className="input-base">
+          {BUDGETS.map((b) => <option key={b} value={b}>{b}</option>)}
         </select>
-      </div>
-      <div className="space-y-1 sm:col-span-2">
-        <label htmlFor="lead-target" className="text-xs font-medium uppercase tracking-wide text-text-muted">
-          ¿Qué auto buscas?
-        </label>
+      </Field>
+      <Field id="lead-target" label="¿Qué auto buscas?" className="sm:col-span-2">
         <textarea
           id="lead-target"
           rows={3}
           value={form.target}
           onChange={update('target')}
           className="input-base resize-none"
-          placeholder="Marca, modelo, año, color, etc."
+          placeholder="Marca, modelo, año, color, especificaciones…"
         />
-      </div>
-      <div className="space-y-1">
-        <label htmlFor="lead-origin" className="text-xs font-medium uppercase tracking-wide text-text-muted">
-          País de preferencia
-        </label>
-        <select
-          id="lead-origin"
-          value={form.origin}
-          onChange={update('origin')}
-          className="input-base"
-        >
-          {ORIGINS.map((o) => (
-            <option key={o} value={o}>{o}</option>
-          ))}
+      </Field>
+      <Field id="lead-origin" label="País de preferencia">
+        <select id="lead-origin" value={form.origin} onChange={update('origin')} className="input-base">
+          {ORIGINS.map((o) => <option key={o} value={o}>{o}</option>)}
         </select>
-      </div>
-      <div className="space-y-1 sm:col-span-2">
-        <label htmlFor="lead-message" className="text-xs font-medium uppercase tracking-wide text-text-muted">
-          Mensaje
-        </label>
+      </Field>
+      <Field id="lead-message" label="Mensaje" className="sm:col-span-2">
         <textarea
           id="lead-message"
           rows={3}
@@ -144,15 +118,29 @@ export default function LeadForm({ initialData, compact = false }) {
           className="input-base resize-none"
           placeholder="Cuéntanos más detalles…"
         />
-      </div>
+      </Field>
       <div className="sm:col-span-2">
         <button type="submit" className="btn-primary w-full">
           Enviar solicitud
         </button>
-        <p className="mt-2 text-xs text-text-muted">
-          Te contactaremos dentro de 24 horas hábiles.
+        <p className="mt-2 font-mono text-[10px] uppercase tracking-widest2 text-ink-muted">
+          Te contactaremos en menos de 24 horas hábiles.
         </p>
       </div>
     </form>
+  );
+}
+
+function Field({ id, label, children, className = '' }) {
+  return (
+    <div className={`space-y-1.5 ${className}`}>
+      <label
+        htmlFor={id}
+        className="font-mono text-[10px] font-bold uppercase tracking-widest2 text-ink-muted"
+      >
+        {label}
+      </label>
+      {children}
+    </div>
   );
 }

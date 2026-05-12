@@ -2,7 +2,7 @@ import { MessageCircle } from 'lucide-react';
 
 const PHONE = '56900000000';
 const MESSAGE = encodeURIComponent(
-  'Hola MaosCars, me interesa importar un auto clásico.'
+  'Hola Maos Vintage Garage, me interesa importar un auto clásico.'
 );
 
 export default function WhatsAppFab() {
@@ -12,7 +12,7 @@ export default function WhatsAppFab() {
       target="_blank"
       rel="noreferrer noopener"
       aria-label="Escríbenos por WhatsApp"
-      className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/40 transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2 focus:ring-offset-bg"
+      className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-racing-green text-paper-light shadow-paper transition-transform hover:scale-105 hover:bg-racing-deep focus:outline-none focus:ring-2 focus:ring-oxblood focus:ring-offset-2 focus:ring-offset-paper"
     >
       <MessageCircle size={26} aria-hidden="true" />
     </a>

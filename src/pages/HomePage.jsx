@@ -1,26 +1,25 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Eye, Wrench, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Seo from '../components/Seo.jsx';
 import Hero from '../components/Hero.jsx';
 import Calculadora from '../components/Calculadora.jsx';
-import CheckerStrip from '../components/CheckerStrip.jsx';
 
-const VALUE_PROPS = [
+const VALUES = [
   {
-    icon: Eye,
-    title: 'Transparencia total',
-    text: 'Cada peso desglosado. Sabes exactamente cuánto vale tu auto puesto en Santiago antes de firmar.',
+    n: '01',
+    title: 'Transparencia',
+    text: 'Cada peso desglosado en una calculadora pública antes de que firmes nada. Sin letra chica.',
   },
   {
-    icon: ShieldCheck,
+    n: '02',
     title: 'Sin riesgos',
-    text: 'Inspección PPI con video y 80 fotos antes de pagar. Seguro full en tránsito.',
+    text: 'Inspección PPI con video y 80 fotos antes de transferir. Seguro full en tránsito.',
   },
   {
-    icon: Wrench,
-    title: 'Soporte post-entrega',
-    text: 'Te ayudamos con la patente, primer service y red de mecánicos especializados.',
+    n: '03',
+    title: 'Post-entrega',
+    text: 'Te ayudamos con la patente, el primer service y la red de mecánicos especializados.',
   },
 ];
 
@@ -30,69 +29,92 @@ export default function HomePage() {
       <Seo path="/" />
       <Hero />
 
-      <section className="section">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="eyebrow">Por qué Maos Vintage Garage</p>
-          <h2 className="h-display mt-3 text-[clamp(2rem,6vw,4rem)]">
-            La forma fácil y segura<br />de importar un clásico
-          </h2>
-          <p className="mt-4 text-text-muted">
-            Hacemos lo que nadie quiere hacer: buscar, inspeccionar, embarcar y
-            nacionalizar. Tú solo decides el auto.
-          </p>
-        </div>
+      {/* Editorial section — values */}
+      <section className="border-b border-ink-line bg-paper">
+        <div className="section">
+          <div className="grid gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <p className="eyebrow">Filosofía</p>
+              <h2 className="h-display mt-4 text-[clamp(2rem,5vw,3.5rem)]">
+                La forma <em className="italic text-oxblood">honesta</em> de importar.
+              </h2>
+              <p className="mt-5 font-serif text-lg italic text-ink-soft">
+                Hacemos lo que nadie quiere hacer: buscar, inspeccionar, embarcar y nacionalizar. Tú decides el auto, nosotros nos encargamos del resto.
+              </p>
+            </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {VALUE_PROPS.map(({ icon: Icon, title, text }, i) => (
-            <motion.div
-              key={title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="card relative overflow-hidden p-6 hover:border-brand-orange/40"
-            >
-              <span className="mb-4 inline-flex rounded-md border border-bg-border bg-bg p-3 text-brand-orange">
-                <Icon size={24} aria-hidden="true" />
-              </span>
-              <h3 className="h-display text-2xl text-white">{title}</h3>
-              <p className="mt-2 text-sm text-text-muted">{text}</p>
-              <div className="absolute -right-2 -top-2 h-10 w-10 checker-sm rounded-sm opacity-30" aria-hidden="true" />
-            </motion.div>
-          ))}
+            <ol className="space-y-8 lg:col-span-8">
+              {VALUES.map(({ n, title, text }, i) => (
+                <motion.li
+                  key={n}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-60px' }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="grid grid-cols-[auto_1fr] gap-6 border-t border-ink-line pt-6 first:border-t-0 first:pt-0 sm:gap-10"
+                >
+                  <span className="font-condensed text-6xl leading-none text-cognac sm:text-7xl">
+                    {n}
+                  </span>
+                  <div>
+                    <h3 className="font-display text-3xl font-bold text-ink">{title}</h3>
+                    <p className="mt-2 max-w-xl font-serif text-lg text-ink-soft">{text}</p>
+                  </div>
+                </motion.li>
+              ))}
+            </ol>
+          </div>
         </div>
       </section>
 
-      <CheckerStrip height="h-3" />
-
-      <Calculadora variant="home" />
-
-      <CheckerStrip height="h-3" />
-
-      <section className="section">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="card relative flex flex-col items-start gap-4 overflow-hidden p-8 sm:flex-row sm:items-center sm:justify-between"
-        >
-          <div className="absolute inset-y-0 right-0 w-32 checker opacity-10" aria-hidden="true" />
-          <div className="relative">
-            <p className="eyebrow">¿Listo para empezar?</p>
-            <h2 className="h-display mt-2 text-3xl sm:text-4xl">
-              Conversemos sobre<br />tu auto ideal
-            </h2>
-            <p className="mt-2 max-w-xl text-text-muted">
-              Cuéntanos qué buscas y en menos de 7 días te mostramos 3
-              candidatos reales.
+      {/* Editorial divider quote */}
+      <section className="border-b border-ink-line bg-paper-deep text-paper-light">
+        <div className="section text-center">
+          <motion.blockquote
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="mx-auto max-w-3xl"
+          >
+            <p className="font-serif text-3xl italic leading-tight sm:text-5xl">
+              "Un clásico no se compra dos veces. Te ayudamos a hacerlo bien la primera."
             </p>
-          </div>
-          <Link to="/contacto" className="btn-primary relative shrink-0">
-            Empezar
-            <ArrowRight size={18} aria-hidden="true" />
-          </Link>
-        </motion.div>
+            <footer className="mt-6 font-mono text-[11px] uppercase tracking-widest2 text-brass">
+              — Maos Vintage Garage
+            </footer>
+          </motion.blockquote>
+        </div>
+      </section>
+
+      <div className="section">
+        <Calculadora variant="home" />
+      </div>
+
+      {/* Final CTA */}
+      <section className="border-y border-ink-line bg-paper-dark/40">
+        <div className="section">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="card-paper flex flex-col items-start justify-between gap-6 p-8 sm:flex-row sm:items-center sm:p-12"
+          >
+            <div>
+              <p className="eyebrow">Listo para empezar</p>
+              <h2 className="h-display mt-3 text-4xl sm:text-5xl">
+                Cuéntanos qué auto sueñas.
+              </h2>
+              <p className="mt-3 font-serif text-lg italic text-ink-soft">
+                En menos de 7 días te mostramos 3 candidatos reales en el país que prefieras.
+              </p>
+            </div>
+            <Link to="/contacto" className="btn-primary shrink-0">
+              Empezar mi pedido
+              <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+          </motion.div>
+        </div>
       </section>
     </>
   );

@@ -1,137 +1,152 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Calculator, Car, ShieldCheck, Plane, Clock } from 'lucide-react';
-import CheckerStrip from './CheckerStrip.jsx';
+import { Calculator, Car } from 'lucide-react';
 
-const METRICS = [
-  { icon: Plane, label: '0 km presenciales para ti' },
-  { icon: ShieldCheck, label: '100% asegurado en tránsito' },
-  { icon: Clock, label: '75–120 días puerta a puerta' },
-];
+const ORIGINS = ['USA', 'Alemania', 'Italia', 'Reino Unido', 'Japón', 'Francia', 'Canadá'];
 
 export default function Hero() {
   return (
-    <section
-      className="relative overflow-hidden"
-      aria-labelledby="hero-heading"
-    >
-      <div className="mx-auto grid w-full max-w-7xl items-center gap-8 px-4 pb-10 pt-10 sm:px-6 sm:pb-16 sm:pt-14 lg:grid-cols-2 lg:gap-12 lg:px-8 lg:pt-20">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="order-2 flex flex-col justify-center lg:order-1"
-        >
-          <p className="eyebrow">Importación bajo pedido</p>
-          <h1
-            id="hero-heading"
-            className="h-display mt-4 text-[clamp(2.4rem,8vw,5.5rem)] text-white"
-          >
-            Trae tu auto clásico desde{' '}
-            <motion.span
-              initial={{ color: '#fff' }}
-              animate={{ color: '#F28100' }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-            >
-              USA
-            </motion.span>{' '}
-            o{' '}
-            <motion.span
-              initial={{ color: '#fff' }}
-              animate={{ color: '#F28100' }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-            >
-              Alemania
-            </motion.span>
-            .
-            <br />
-            <span className="text-text-muted">Sin sorpresas,</span>{' '}
-            <span className="text-text-muted">sin riesgos.</span>
-          </h1>
+    <section className="relative overflow-hidden border-b border-ink-line" aria-labelledby="hero-heading">
+      {/* Magazine cover header strip */}
+      <div className="border-b border-ink-line bg-paper-deep text-paper-light">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 font-mono text-[10px] uppercase tracking-widest2 sm:px-6 lg:px-8">
+          <span className="text-brass">Vol. 01 · No. 01</span>
+          <span className="hidden text-paper-light/70 sm:inline">Importación de autos clásicos · Edición Chile</span>
+          <span className="text-brass">MMXXV</span>
+        </div>
+      </div>
 
-          <p className="mt-5 max-w-xl text-base text-text-muted sm:text-lg">
-            Importación bajo pedido con transparencia total. Tú decides el auto,
-            nosotros nos encargamos del resto.
-          </p>
+      <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 pb-12 pt-10 sm:px-6 sm:pb-20 sm:pt-16 lg:grid-cols-12 lg:px-8 lg:gap-12 lg:pt-24">
+        <div className="lg:col-span-7">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="eyebrow"
+          >
+            Importación bajo pedido · Desde 1 país, hacia tu garage
+          </motion.p>
+
+          <motion.h1
+            id="hero-heading"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="h-display mt-6 text-[clamp(2.6rem,8.5vw,6.5rem)] text-ink"
+          >
+            El clásico que{' '}
+            <span className="italic text-oxblood">soñabas</span>,<br />
+            puesto en tu{' '}
+            <span className="relative inline-block">
+              garage
+              <motion.span
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                style={{ originX: 0 }}
+                className="absolute -bottom-1 left-0 right-0 h-[6px] bg-cognac"
+                aria-hidden="true"
+              />
+            </span>
+            .
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mt-7 max-w-xl font-serif text-xl leading-relaxed text-ink-soft sm:text-2xl"
+          >
+            Lo buscamos, lo inspeccionamos, lo embarcamos y te lo entregamos en Chile.
+            <em className="text-oxblood"> Transparencia total. Sin sorpresas.</em>
+          </motion.p>
+
+          {/* Origin marquee */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="mt-8 flex flex-wrap items-center gap-x-2 gap-y-2 border-y border-ink-line py-3"
+          >
+            <span className="font-mono text-[10px] font-bold uppercase tracking-widest2 text-ink-muted">
+              Desde:
+            </span>
+            {ORIGINS.map((o, i) => (
+              <span key={o} className="flex items-center gap-2">
+                <span className="font-condensed text-base uppercase tracking-wider2 text-ink">
+                  {o}
+                </span>
+                {i < ORIGINS.length - 1 && (
+                  <span className="text-oxblood" aria-hidden="true">·</span>
+                )}
+              </span>
+            ))}
+            <span className="font-condensed text-base uppercase tracking-wider2 text-cognac">
+              + cualquier país del mundo
+            </span>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-            className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+            transition={{ delay: 0.5, duration: 0.5 }}
+            className="mt-8 flex flex-col gap-3 sm:flex-row"
           >
-            <Link to="/calculadora" className="btn-primary text-sm">
-              <Calculator size={18} aria-hidden="true" />
-              Calcular costo
+            <Link to="/calculadora" className="btn-primary text-xs">
+              <Calculator size={16} aria-hidden="true" />
+              Cotizar mi auto
             </Link>
-            <Link to="/catalogo" className="btn-outline text-sm">
-              <Car size={18} aria-hidden="true" />
-              Ver autos disponibles
+            <Link to="/catalogo" className="btn-outline text-xs">
+              <Car size={16} aria-hidden="true" />
+              Ver catálogo
             </Link>
           </motion.div>
-        </motion.div>
+        </div>
 
+        {/* Right column — vintage "ficha" panel */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
+          initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="relative order-1 lg:order-2"
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="lg:col-span-5"
         >
-          {/* Checker corner accent */}
-          <div className="absolute -left-1 -top-1 z-10 h-12 w-12 checker-sm rounded-md sm:h-16 sm:w-16" aria-hidden="true" />
-          <div className="absolute -bottom-1 -right-1 z-10 h-12 w-12 checker-sm rounded-md sm:h-16 sm:w-16" aria-hidden="true" />
-
-          <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-bg-border bg-bg-card shadow-card">
-            <img
-              src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1400&q=80"
-              alt="Auto clásico estacionado bajo el sol"
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
-              className="h-full w-full object-cover"
-            />
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-bg/80 via-transparent to-transparent"
-            />
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.7, duration: 0.5 }}
-              className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3 text-white"
-            >
-              <span className="rounded-full border border-white/30 bg-black/40 px-3 py-1 font-mono text-[10px] uppercase tracking-widest backdrop-blur">
-                Foto referencial
+          <div className="card-paper p-6 sm:p-8">
+            <div className="flex items-center justify-between border-b border-ink-line pb-3">
+              <span className="font-mono text-[10px] font-bold uppercase tracking-widest2 text-oxblood">
+                Manual del propietario
               </span>
-              <span className="font-display text-2xl leading-none sm:text-3xl">
-                EST. 2025
+              <span className="font-mono text-[10px] uppercase tracking-widest2 text-ink-muted">
+                Edición 2025
               </span>
-            </motion.div>
+            </div>
+            <h2 className="mt-5 font-display text-3xl font-bold text-ink">
+              ¿Por qué importar<br />con nosotros?
+            </h2>
+            <ul className="mt-5 space-y-4">
+              {[
+                ['01', 'Transparencia total', 'Cada peso desglosado antes de firmar.'],
+                ['02', 'Inspección previa', 'PPI con 80 fotos y video antes de pagar.'],
+                ['03', 'Seguro en tránsito', '100% asegurado puerta a puerta.'],
+                ['04', 'Plazos definidos', '75–120 días puerta a puerta.'],
+              ].map(([n, title, desc]) => (
+                <li key={n} className="flex gap-3 border-b border-dashed border-ink-line/60 pb-3 last:border-b-0">
+                  <span className="font-condensed text-3xl font-normal leading-none text-cognac">
+                    {n}
+                  </span>
+                  <div>
+                    <p className="font-display text-lg font-bold text-ink">{title}</p>
+                    <p className="font-serif text-sm italic text-ink-muted">{desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6 border-t border-ink-line pt-4">
+              <p className="font-mono text-[10px] uppercase tracking-widest2 text-ink-muted">
+                Una empresa del grupo MaosBike
+              </p>
+            </div>
           </div>
         </motion.div>
-      </div>
-
-      <CheckerStrip height="h-3" />
-
-      <div className="bg-bg-card/50">
-        <div className="mx-auto grid w-full max-w-7xl gap-4 px-4 py-6 sm:grid-cols-3 sm:px-6 lg:px-8">
-          {METRICS.map(({ icon: Icon, label }, i) => (
-            <motion.div
-              key={label}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 + i * 0.1 }}
-              className="flex items-center gap-3 text-sm text-text-muted"
-            >
-              <span className="rounded-md border border-bg-border bg-bg p-2 text-brand-orange">
-                <Icon size={18} aria-hidden="true" />
-              </span>
-              <span className="font-semibold uppercase tracking-wider text-text">
-                {label}
-              </span>
-            </motion.div>
-          ))}
-        </div>
       </div>
     </section>
   );

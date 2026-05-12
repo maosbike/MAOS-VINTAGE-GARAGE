@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X, Calculator } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Logo from './Logo.jsx';
-import CheckerStrip from './CheckerStrip.jsx';
 
 const NAV = [
   { to: '/catalogo', label: 'Catálogo' },
   { to: '/proceso', label: 'Proceso' },
   { to: '/casos', label: 'Casos' },
-  { to: '/blog', label: 'Blog' },
+  { to: '/blog', label: 'Diario' },
   { to: '/contacto', label: 'Contacto' },
 ];
 
@@ -31,13 +30,25 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-40 transition-colors duration-200 ${
+      className={`sticky top-0 z-40 transition-all ${
         scrolled
-          ? 'border-b border-bg-border bg-bg/90 backdrop-blur'
-          : 'bg-bg/60 backdrop-blur-sm'
+          ? 'border-b border-ink-line bg-paper/95 backdrop-blur'
+          : 'bg-paper/80 backdrop-blur-sm'
       }`}
     >
-      <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8">
+      {/* Top utility bar */}
+      <div className="hidden border-b border-ink-line/60 bg-paper-deep text-paper-light md:block">
+        <div className="mx-auto flex h-8 max-w-7xl items-center justify-between px-6 font-mono text-[10px] uppercase tracking-widest2 text-paper-light/70 lg:px-8">
+          <span>EST. 2025 · Santiago, Chile</span>
+          <span className="flex items-center gap-4">
+            <a href="https://wa.me/56900000000" className="hover:text-brass" target="_blank" rel="noreferrer">WhatsApp +56 9 0000 0000</a>
+            <span aria-hidden="true">·</span>
+            <a href="mailto:hola@maoscars.cl" className="hover:text-brass">hola@maoscars.cl</a>
+          </span>
+        </div>
+      </div>
+
+      <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-4 sm:h-24 sm:px-6 lg:px-8">
         <Link
           to="/"
           aria-label="Inicio Maos Vintage Garage"
@@ -45,35 +56,39 @@ export default function Header() {
         >
           <Logo
             priority
-            className="h-9 sm:h-11"
+            className="h-12 sm:h-16"
           />
         </Link>
 
-        <nav
-          className="hidden items-center gap-7 md:flex"
-          aria-label="Principal"
-        >
+        <nav className="hidden items-center gap-8 md:flex" aria-label="Principal">
           {NAV.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
               className={({ isActive }) =>
-                `text-sm font-semibold uppercase tracking-wider transition-colors ${
-                  isActive
-                    ? 'text-brand-orange'
-                    : 'text-text-muted hover:text-text'
+                `relative font-mono text-xs font-semibold uppercase tracking-widest2 transition-colors ${
+                  isActive ? 'text-oxblood' : 'text-ink hover:text-oxblood'
                 }`
               }
             >
-              {item.label}
+              {({ isActive }) => (
+                <>
+                  {item.label}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="absolute -bottom-2 left-0 right-0 h-[2px] bg-oxblood"
+                    />
+                  )}
+                </>
+              )}
             </NavLink>
           ))}
         </nav>
 
         <div className="hidden md:block">
-          <Link to="/calculadora" className="btn-primary px-5 py-2 text-xs">
-            <Calculator size={16} aria-hidden="true" />
-            Calcular
+          <Link to="/calculadora" className="btn-primary px-5 py-2.5 text-[11px]">
+            Cotizar
           </Link>
         </div>
 
@@ -82,13 +97,16 @@ export default function Header() {
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
           aria-expanded={open}
-          className="-mr-2 rounded-md p-2 text-text md:hidden"
+          className="-mr-2 rounded-md p-2 text-ink md:hidden"
         >
           {open ? <X size={26} /> : <Menu size={26} />}
         </button>
       </div>
 
-      <CheckerStrip height="h-2" size="sm" />
+      {/* Decorative double rule */}
+      <div className="border-y border-ink-line">
+        <div className="h-px bg-paper" />
+      </div>
 
       <AnimatePresence>
         {open && (
@@ -100,7 +118,7 @@ export default function Header() {
             className="overflow-hidden md:hidden"
           >
             <nav
-              className="space-y-1 border-b border-bg-border bg-bg px-4 py-4"
+              className="space-y-1 border-b border-ink-line bg-paper-light px-4 py-4"
               aria-label="Mobile"
             >
               {NAV.map((item, i) => (
@@ -113,10 +131,10 @@ export default function Header() {
                   <NavLink
                     to={item.to}
                     className={({ isActive }) =>
-                      `block rounded-md px-3 py-3 text-base font-semibold uppercase tracking-wider ${
+                      `block rounded-sm px-3 py-3 font-mono text-sm font-semibold uppercase tracking-widest2 ${
                         isActive
-                          ? 'bg-bg-card text-brand-orange'
-                          : 'text-text-muted hover:bg-bg-card hover:text-text'
+                          ? 'bg-paper-dark text-oxblood'
+                          : 'text-ink hover:bg-paper-dark hover:text-oxblood'
                       }`
                     }
                   >
@@ -125,8 +143,7 @@ export default function Header() {
                 </motion.div>
               ))}
               <Link to="/calculadora" className="btn-primary mt-3 w-full">
-                <Calculator size={16} aria-hidden="true" />
-                Calcular costo
+                Cotizar mi auto
               </Link>
             </nav>
           </motion.div>

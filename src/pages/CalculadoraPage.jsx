@@ -6,7 +6,7 @@ export default function CalculadoraPage() {
     <>
       <Seo
         title="Calculadora de importación"
-        description="Estima en tiempo real cuánto te cuesta importar tu auto clásico a Chile desde USA o Alemania."
+        description="Estima en tiempo real cuánto te cuesta importar tu auto clásico a Chile desde cualquier país."
         path="/calculadora"
       />
       <div className="section">
