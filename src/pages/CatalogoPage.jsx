@@ -54,18 +54,18 @@ export default function CatalogoPage() {
     <div className="space-y-5">
       <FilterGroup label="Marca">
         <select value={brand} onChange={(e) => setBrand(e.target.value)} className="input-base">
-          <option value="all" className="bg-canvas-raised">Todas</option>
-          {brands.map((b) => <option key={b} value={b} className="bg-canvas-raised">{b}</option>)}
+          <option value="all" className="bg-coal-raised">Todas</option>
+          {brands.map((b) => <option key={b} value={b} className="bg-coal-raised">{b}</option>)}
         </select>
       </FilterGroup>
       <FilterGroup label="País de origen">
         <select value={origin} onChange={(e) => setOrigin(e.target.value)} className="input-base">
-          {ORIGIN_OPTIONS.map((o) => <option key={o.value} value={o.value} className="bg-canvas-raised">{o.label}</option>)}
+          {ORIGIN_OPTIONS.map((o) => <option key={o.value} value={o.value} className="bg-coal-raised">{o.label}</option>)}
         </select>
       </FilterGroup>
       <FilterGroup label="Estado">
         <select value={status} onChange={(e) => setStatus(e.target.value)} className="input-base">
-          {STATUS_OPTIONS.map((o) => <option key={o.value} value={o.value} className="bg-canvas-raised">{o.label}</option>)}
+          {STATUS_OPTIONS.map((o) => <option key={o.value} value={o.value} className="bg-coal-raised">{o.label}</option>)}
         </select>
       </FilterGroup>
       <FilterGroup label={`Año máximo · ${yearMax}`}>
@@ -85,7 +85,7 @@ export default function CatalogoPage() {
         path="/catalogo"
       />
       <div className="section">
-        <div className="border-b border-canvas-line pb-6">
+        <div className="border-b border-coal-line pb-6">
           <p className="eyebrow">Catálogo · Lotes en circulación</p>
           <h1 className="mt-5 font-display text-[clamp(2.2rem,9vw,5.5rem)] uppercase leading-[0.9] tracking-tight sm:tracking-wider2">
             Autos en pista<br />
@@ -98,7 +98,7 @@ export default function CatalogoPage() {
 
         {searching.length > 0 && (
           <section className="mt-14">
-            <div className="mb-6 flex items-baseline justify-between border-b border-canvas-line pb-3">
+            <div className="mb-6 flex items-baseline justify-between border-b border-coal-line pb-3">
               <h2 className="font-display text-3xl tracking-wider2">Clientes están buscando</h2>
               <span className="font-mono text-[10px] uppercase tracking-widest2 text-ink-muted">
                 {searching.length} pedidos abiertos
@@ -155,10 +155,10 @@ export default function CatalogoPage() {
           <button
             type="button"
             aria-label="Cerrar filtros"
-            className="absolute inset-0 bg-canvas/80 backdrop-blur"
+            className="absolute inset-0 bg-coal/80 backdrop-blur"
             onClick={() => setDrawerOpen(false)}
           />
-          <div className="absolute inset-y-0 right-0 w-80 max-w-full overflow-y-auto border-l border-canvas-line bg-canvas-raised p-5">
+          <div className="absolute inset-y-0 right-0 w-80 max-w-full overflow-y-auto border-l border-coal-line bg-coal-raised p-5">
             <div className="mb-4 flex items-center justify-between">
               <h3 className="font-display text-xl tracking-wider2">Filtros</h3>
               <button

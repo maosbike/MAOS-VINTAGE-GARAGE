@@ -15,7 +15,7 @@ export default function CasosPage() {
         path="/casos"
       />
       <div className="section">
-        <div className="border-b border-canvas-line pb-6">
+        <div className="border-b border-coal-line pb-6">
           <p className="eyebrow">Casos · Importaciones cerradas</p>
           <h1 className="mt-5 font-display text-[clamp(2.2rem,9vw,5.5rem)] uppercase leading-[0.9] tracking-tight sm:tracking-wider2">
             Historias reales,<br />
@@ -48,7 +48,7 @@ export default function CasosPage() {
                   <span className="absolute left-4 top-4 origin-code">{c.lot}</span>
                 </div>
 
-                <div className="flex flex-col justify-between gap-6 border-t border-canvas-line p-6 sm:p-8 lg:col-span-5 lg:border-l lg:border-t-0">
+                <div className="flex flex-col justify-between gap-6 border-t border-coal-line p-6 sm:p-8 lg:col-span-5 lg:border-l lg:border-t-0">
                   <div>
                     <p className="font-mono text-[10px] uppercase tracking-widest2 text-cognac">
                       {c.originLabel}
@@ -64,7 +64,7 @@ export default function CasosPage() {
                     </p>
                   </div>
 
-                  <dl className="grid grid-cols-2 gap-4 border-y border-canvas-line py-4">
+                  <dl className="grid grid-cols-2 gap-4 border-y border-coal-line py-4">
                     <div>
                       <dt className="font-mono text-[10px] uppercase tracking-widest2 text-ink-faint">
                         Tiempo entrega

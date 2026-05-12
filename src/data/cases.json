@@ -9,7 +9,7 @@
     "daysToDeliver": 92,
     "totalClp": 41800000,
     "summary": "Subasta privada en Carolina del Norte. Restauración original verificada con Marti Report. Cliente recibió en Santiago en 92 días.",
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/1967%20Ford%20Mustang%20fastback.JPG?width=1200"
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/1967%20Ford%20Mustang%20fastback.JPG?width=900"
   },
   {
     "id": "case-porsche-911t",
@@ -21,7 +21,7 @@
     "daysToDeliver": 108,
     "totalClp": 78500000,
     "summary": "Subasta Klassik en Stuttgart. Matching numbers verificados con Porsche AG. Inspección PPI con 120 fotos y video.",
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Porsche%20911%20T%2C%20Bj.%201973%2C%20130%20PS%20(2017-06-17%20Sp).JPG?width=1200"
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Porsche%20911%20T%2C%20Bj.%201973%2C%20130%20PS%20(2017-06-17%20Sp).JPG?width=900"
   },
   {
     "id": "case-vw-bus",
@@ -33,6 +33,6 @@
     "daysToDeliver": 115,
     "totalClp": 28200000,
     "summary": "Encontrado por nuestro hunter en Hamburgo. Inspección PPI completa, embarque en container 40' compartido.",
-    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/1976%20Volkswagen%20Kombi%20(T2)%20(40107027615).jpg?width=1200"
+    "image": "https://commons.wikimedia.org/wiki/Special:FilePath/1976%20Volkswagen%20Kombi%20(T2)%20(40107027615).jpg?width=900"
   }
 ]

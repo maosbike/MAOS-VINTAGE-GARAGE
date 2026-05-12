@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        canvas: {
+        coal: {
           DEFAULT: '#0e0d0b',
           raised: '#15140f',
           card: '#1c1a16',
@@ -54,7 +54,7 @@ export default {
         inner: 'inset 0 0 0 1px rgba(212,162,76,0.10)',
       },
       backgroundImage: {
-        'grad-canvas':
+        'grad-coal':
           'radial-gradient(ellipse at top, rgba(201,127,58,0.10) 0%, transparent 50%), radial-gradient(ellipse at bottom right, rgba(212,162,76,0.06) 0%, transparent 60%)',
         'grad-vignette':
           'radial-gradient(ellipse 70% 50% at 50% 50%, transparent 0%, rgba(14,13,11,0.65) 100%)',

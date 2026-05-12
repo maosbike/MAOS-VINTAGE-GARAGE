@@ -23,7 +23,7 @@ export default function ContactoPage() {
             </p>
 
             <div className="card mt-10 overflow-hidden">
-              <div className="border-b border-canvas-line bg-canvas-raised/60 px-5 py-4">
+              <div className="border-b border-coal-line bg-coal-raised/60 px-5 py-4">
                 <h2 className="font-display text-2xl tracking-wider2">Formulario</h2>
               </div>
               <div className="p-5 sm:p-7">
@@ -34,7 +34,7 @@ export default function ContactoPage() {
 
           <aside className="space-y-4">
             <div className="card overflow-hidden">
-              <div className="border-b border-canvas-line bg-canvas-raised/60 px-5 py-4">
+              <div className="border-b border-coal-line bg-coal-raised/60 px-5 py-4">
                 <h2 className="font-display text-xl tracking-wider2">Canales directos</h2>
               </div>
               <ul className="space-y-5 p-5">
@@ -67,7 +67,7 @@ export default function ContactoPage() {
             </div>
 
             <div className="card overflow-hidden">
-              <div className="border-b border-canvas-line bg-canvas-raised/60 px-5 py-4">
+              <div className="border-b border-coal-line bg-coal-raised/60 px-5 py-4">
                 <h2 className="font-display text-xl tracking-wider2">Horario</h2>
               </div>
               <p className="p-5 font-mono text-sm leading-relaxed text-ink-soft">

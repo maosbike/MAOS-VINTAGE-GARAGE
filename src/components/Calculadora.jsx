@@ -57,7 +57,7 @@ export default function Calculadora({ variant = 'page' }) {
       <div className="grid gap-6 lg:grid-cols-5">
         {/* INPUTS */}
         <div className="card lg:col-span-2">
-          <div className="flex items-baseline justify-between border-b border-canvas-line bg-canvas-raised/60 px-5 py-4">
+          <div className="flex items-baseline justify-between border-b border-coal-line bg-coal-raised/60 px-5 py-4">
             <h3 className="font-display text-2xl tracking-wider2">Tu pedido</h3>
             <span className="font-mono text-[10px] uppercase tracking-widest2 text-ink-faint">
               Sección A
@@ -73,7 +73,7 @@ export default function Calculadora({ variant = 'page' }) {
                 className="input-base"
               >
                 {ORIGINS.map((o) => (
-                  <option key={o.code} value={o.code} className="bg-canvas-raised">
+                  <option key={o.code} value={o.code} className="bg-coal-raised">
                     {o.label}
                   </option>
                 ))}
@@ -114,7 +114,7 @@ export default function Calculadora({ variant = 'page' }) {
               />
             </Field>
 
-            <label className="flex cursor-pointer items-start gap-3 rounded-sm border border-canvas-line bg-canvas-raised/60 p-3 transition-colors hover:border-cognac">
+            <label className="flex cursor-pointer items-start gap-3 rounded-sm border border-coal-line bg-coal-raised/60 p-3 transition-colors hover:border-cognac">
               <input
                 type="checkbox"
                 checked={fta}
@@ -131,14 +131,14 @@ export default function Calculadora({ variant = 'page' }) {
 
         {/* OUTPUT */}
         <div className="card lg:col-span-3">
-          <div className="flex items-baseline justify-between border-b border-canvas-line bg-canvas-raised/60 px-5 py-4">
+          <div className="flex items-baseline justify-between border-b border-coal-line bg-coal-raised/60 px-5 py-4">
             <h3 className="font-display text-2xl tracking-wider2">Desglose</h3>
             <span className="font-mono text-[10px] uppercase tracking-widest2 text-ink-faint">
               FX {fx}
             </span>
           </div>
 
-          <ul className="divide-y divide-canvas-line/60 px-5">
+          <ul className="divide-y divide-coal-line/60 px-5">
             <Line label="Precio de compra" value={formatUSD(result.purchaseUSD)} tooltip="Lo que pagas en USD al vendedor en origen." />
             <Line label={`Flete marítimo · ${originDef?.label}`} value={formatUSD(result.freightUSD)} tooltip={`Flete desde ${originDef?.label} a San Antonio (RoRo o container 40' compartido).`} />
             <Line label="Seguro tránsito (2%)" value={formatUSD(result.insuranceUSD)} tooltip="Cobertura todo riesgo del auto durante el embarque." />
@@ -151,7 +151,7 @@ export default function Calculadora({ variant = 'page' }) {
           </ul>
 
           {/* TOTAL */}
-          <div className="m-5 mt-4 overflow-hidden border-2 border-cognac bg-gradient-to-br from-canvas-raised to-canvas">
+          <div className="m-5 mt-4 overflow-hidden border-2 border-cognac bg-gradient-to-br from-coal-raised to-coal">
             <div className="flex items-center justify-between border-b border-cognac/40 bg-cognac/15 px-4 py-2">
               <span className="font-mono text-[10px] font-bold uppercase tracking-widest2 text-cognac-light">
                 Total final · puesto en Santiago
@@ -175,7 +175,7 @@ export default function Calculadora({ variant = 'page' }) {
             </div>
           </div>
 
-          <div className="flex flex-col gap-3 border-t border-canvas-line p-5 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-3 border-t border-coal-line p-5 sm:flex-row sm:items-center sm:justify-between">
             <p className="max-w-md font-serif text-sm italic text-ink-muted">
               Estimación referencial. Costo final se confirma con cotización formal antes de firmar mandato.
             </p>

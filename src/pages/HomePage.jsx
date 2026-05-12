@@ -23,8 +23,8 @@ export default function HomePage() {
       <Hero />
 
       {/* Values strip */}
-      <section className="border-y border-canvas-line bg-canvas-raised">
-        <div className="mx-auto grid max-w-7xl gap-px bg-canvas-line sm:grid-cols-2 lg:grid-cols-4">
+      <section className="border-y border-coal-line bg-coal-raised">
+        <div className="mx-auto grid max-w-7xl gap-px bg-coal-line sm:grid-cols-2 lg:grid-cols-4">
           {VALUES.map(({ n, icon: Icon, title, text }, i) => (
             <motion.div
               key={n}
@@ -32,11 +32,11 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="group flex flex-col gap-4 bg-canvas p-8 transition-colors hover:bg-canvas-raised"
+              className="group flex flex-col gap-4 bg-coal p-8 transition-colors hover:bg-coal-raised"
             >
               <div className="flex items-baseline justify-between">
                 <Icon size={24} className="text-cognac" aria-hidden="true" />
-                <span className="font-display text-3xl tracking-wider2 text-canvas-line group-hover:text-cognac/40">
+                <span className="font-display text-3xl tracking-wider2 text-coal-line group-hover:text-cognac/40">
                   {n}
                 </span>
               </div>
@@ -49,7 +49,7 @@ export default function HomePage() {
 
       {/* Featured cars */}
       <section className="section">
-        <div className="mb-10 flex items-end justify-between gap-4 border-b border-canvas-line pb-6">
+        <div className="mb-10 flex items-end justify-between gap-4 border-b border-coal-line pb-6">
           <div>
             <p className="eyebrow">Lotes destacados</p>
             <h2 className="mt-3 font-display text-[clamp(2rem,5vw,4rem)] uppercase tracking-wider2">
@@ -77,8 +77,8 @@ export default function HomePage() {
       </section>
 
       {/* Quote breaker */}
-      <section className="relative border-y border-canvas-line bg-canvas-raised">
-        <div className="checker text-ink/95 h-1 bg-canvas" aria-hidden="true" />
+      <section className="relative border-y border-coal-line bg-coal-raised">
+        <div className="checker text-ink/95 h-1 bg-coal" aria-hidden="true" />
         <div className="section text-center">
           <motion.blockquote
             initial={{ opacity: 0 }}
@@ -94,13 +94,13 @@ export default function HomePage() {
             </footer>
           </motion.blockquote>
         </div>
-        <div className="checker text-ink/95 h-1 bg-canvas" aria-hidden="true" />
+        <div className="checker text-ink/95 h-1 bg-coal" aria-hidden="true" />
       </section>
 
       <Calculadora variant="home" />
 
       {/* Final CTA */}
-      <section className="border-t border-canvas-line bg-canvas-raised">
+      <section className="border-t border-coal-line bg-coal-raised">
         <div className="section">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

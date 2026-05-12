@@ -20,7 +20,7 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden" aria-labelledby="hero-heading">
       {/* Magazine header bar */}
-      <div className="border-b border-canvas-line bg-canvas-raised">
+      <div className="border-b border-coal-line bg-coal-raised">
         <div className="mx-auto flex h-9 max-w-7xl items-center justify-between px-4 font-mono text-[10px] uppercase tracking-widest2 text-ink-muted sm:px-6 lg:px-8">
           <span className="text-brass">VOL. I · No. 01</span>
           <span className="hidden sm:inline">Importación bajo pedido · Edición Chile</span>
@@ -72,7 +72,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Origin ticker */}
-          <div className="mt-12 overflow-hidden border-y border-canvas-line py-3">
+          <div className="mt-12 overflow-hidden border-y border-coal-line py-3">
             <div className="flex items-center gap-3">
               <span className="shrink-0 font-mono text-[10px] font-bold uppercase tracking-widest2 text-ink-faint">
                 Desde
@@ -90,8 +90,7 @@ export default function Hero() {
                     </span>
                   ))}
                 </motion.div>
-                <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-canvas to-transparent" aria-hidden="true" />
-                <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-canvas to-transparent" aria-hidden="true" />
+                <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-coal to-transparent" aria-hidden="true" />
               </div>
             </div>
           </div>
@@ -105,12 +104,12 @@ export default function Hero() {
           className="relative mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none"
         >
           {/* Corner checker accents */}
-          <div className="absolute -left-2 -top-2 z-10 h-8 w-8 checker text-ink/70 bg-canvas-raised sm:h-10 sm:w-10" aria-hidden="true" />
-          <div className="absolute -bottom-2 -right-2 z-10 h-8 w-8 checker text-ink/70 bg-canvas-raised sm:h-10 sm:w-10" aria-hidden="true" />
+          <div className="absolute -left-2 -top-2 z-10 h-8 w-8 checker text-ink/70 bg-coal-raised sm:h-10 sm:w-10" aria-hidden="true" />
+          <div className="absolute -bottom-2 -right-2 z-10 h-8 w-8 checker text-ink/70 bg-coal-raised sm:h-10 sm:w-10" aria-hidden="true" />
 
-          <div className="relative aspect-[4/3] overflow-hidden border border-canvas-line shadow-plate sm:aspect-[4/3] lg:aspect-[4/5]">
+          <div className="relative aspect-[4/3] overflow-hidden border border-coal-line shadow-plate sm:aspect-[4/3] lg:aspect-[4/5]">
             <CarImage
-              src="https://commons.wikimedia.org/wiki/Special:FilePath/1969%20red%20Chevrolet%20Camaro%20SS%20front.JPG?width=1400"
+              src="https://commons.wikimedia.org/wiki/Special:FilePath/1969%20red%20Chevrolet%20Camaro%20SS%20front.JPG?width=900"
               brand="Chevrolet"
               model="Camaro SS"
               year={1969}
@@ -136,7 +135,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.7 }}
-            className="absolute -bottom-6 -left-4 hidden border border-cognac/40 bg-canvas-raised px-4 py-3 shadow-plate lg:block"
+            className="absolute -bottom-6 -left-4 hidden border border-cognac/40 bg-coal-raised px-4 py-3 shadow-plate lg:block"
           >
             <p className="font-mono text-[10px] uppercase tracking-widest2 text-cognac">Tiempo promedio</p>
             <p className="font-display text-3xl text-ink">75–120 días</p>
@@ -145,7 +144,7 @@ export default function Hero() {
       </div>
 
       {/* Bottom checker accent */}
-      <div className="checker text-ink h-2 bg-canvas-raised" aria-hidden="true" />
+      <div className="checker text-ink h-2 bg-coal-raised" aria-hidden="true" />
     </section>
   );
 }

@@ -28,10 +28,10 @@ export default function Modal({ open, onClose, title, children }) {
         type="button"
         aria-label="Cerrar modal"
         onClick={onClose}
-        className="absolute inset-0 bg-canvas/80 backdrop-blur"
+        className="absolute inset-0 bg-coal/80 backdrop-blur"
       />
       <div className="card relative z-10 w-full max-w-lg overflow-hidden">
-        <div className="flex items-center justify-between border-b border-canvas-line bg-canvas-raised px-5 py-4">
+        <div className="flex items-center justify-between border-b border-coal-line bg-coal-raised px-5 py-4">
           <h2 className="font-display text-2xl tracking-wider2">{title}</h2>
           <button
             type="button"

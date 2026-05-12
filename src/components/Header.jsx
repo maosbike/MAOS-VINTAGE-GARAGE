@@ -32,12 +32,12 @@ export default function Header() {
     <header
       className={`sticky top-0 z-40 transition-all ${
         scrolled
-          ? 'border-b border-canvas-line bg-canvas/95 backdrop-blur-md'
-          : 'bg-canvas/70 backdrop-blur-sm'
+          ? 'border-b border-coal-line bg-coal/95 backdrop-blur-md'
+          : 'bg-coal/70 backdrop-blur-sm'
       }`}
     >
       {/* Utility bar with marquee-style metadata */}
-      <div className="hidden border-b border-canvas-line/60 bg-canvas-raised md:block">
+      <div className="hidden border-b border-coal-line/60 bg-coal-raised md:block">
         <div className="mx-auto flex h-9 max-w-7xl items-center justify-between px-6 font-mono text-[10px] uppercase tracking-widest2 text-ink-muted lg:px-8">
           <span className="flex items-center gap-3">
             <span className="inline-flex h-1.5 w-1.5 rounded-full bg-signal-green animate-pulse" aria-hidden="true" />
@@ -47,7 +47,7 @@ export default function Header() {
             <a href="https://wa.me/56900000000" className="hover:text-cognac" target="_blank" rel="noreferrer">
               WhatsApp +56 9 0000 0000
             </a>
-            <span aria-hidden="true" className="text-canvas-line">·</span>
+            <span aria-hidden="true" className="text-coal-line">·</span>
             <a href="mailto:hola@maoscars.cl" className="hover:text-cognac">
               hola@maoscars.cl
             </a>
@@ -110,7 +110,7 @@ export default function Header() {
       {/* Racing brass rule */}
       <div className="rule-brass" aria-hidden="true" />
       {/* Checker accent strip */}
-      <div className="checker text-ink/95 h-1 bg-canvas-raised" aria-hidden="true" />
+      <div className="checker text-ink/95 h-1 bg-coal-raised" aria-hidden="true" />
 
       <AnimatePresence>
         {open && (
@@ -122,7 +122,7 @@ export default function Header() {
             className="overflow-hidden md:hidden"
           >
             <nav
-              className="space-y-1 border-b border-canvas-line bg-canvas-raised px-4 py-4"
+              className="space-y-1 border-b border-coal-line bg-coal-raised px-4 py-4"
               aria-label="Mobile"
             >
               {NAV.map((item, i) => (
@@ -137,8 +137,8 @@ export default function Header() {
                     className={({ isActive }) =>
                       `block rounded-sm px-3 py-3 font-mono text-sm font-bold uppercase tracking-widest2 ${
                         isActive
-                          ? 'bg-canvas-elevated text-cognac'
-                          : 'text-ink hover:bg-canvas-elevated hover:text-cognac'
+                          ? 'bg-coal-elevated text-cognac'
+                          : 'text-ink hover:bg-coal-elevated hover:text-cognac'
                       }`
                     }
                   >

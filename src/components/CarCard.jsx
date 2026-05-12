@@ -62,7 +62,7 @@ export default function CarCard({ car }) {
           <p className="font-serif text-lg italic text-ink-soft">{car.model}</p>
         </div>
 
-        <dl className="grid grid-cols-2 gap-x-4 gap-y-2 border-y border-canvas-line py-3 text-[11px]">
+        <dl className="grid grid-cols-2 gap-x-4 gap-y-2 border-y border-coal-line py-3 text-[11px]">
           <div className="flex justify-between gap-2">
             <dt className="font-mono uppercase tracking-widest2 text-ink-faint">Motor</dt>
             <dd className="font-mono text-ink truncate text-right">{car.engine}</dd>
@@ -93,7 +93,7 @@ export default function CarCard({ car }) {
           <Link
             to="/contacto"
             aria-label={`Pedir ${car.brand} ${car.model}`}
-            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-sm border border-cognac/60 bg-cognac/10 text-cognac transition-all hover:bg-cognac hover:text-canvas"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-sm border border-cognac/60 bg-cognac/10 text-cognac transition-all hover:bg-cognac hover:text-coal"
           >
             <ArrowUpRight size={18} aria-hidden="true" />
           </Link>

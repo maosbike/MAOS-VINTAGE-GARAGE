@@ -36,7 +36,7 @@ export default function ProcesoPage() {
         path="/proceso"
       />
       <div className="section">
-        <div className="border-b border-canvas-line pb-6">
+        <div className="border-b border-coal-line pb-6">
           <p className="eyebrow">Proceso · Hoja de ruta</p>
           <h1 className="mt-5 font-display text-[clamp(2.2rem,9vw,5.5rem)] uppercase leading-[0.9] tracking-tight sm:tracking-wider2">
             Diez hitos.<br />
@@ -47,7 +47,7 @@ export default function ProcesoPage() {
           </p>
         </div>
 
-        <ol className="relative mt-14 space-y-10 border-l border-canvas-line pl-8 sm:pl-12">
+        <ol className="relative mt-14 space-y-10 border-l border-coal-line pl-8 sm:pl-12">
           {process.map((p, i) => {
             const Icon = ICONS[p.icon] || ListChecks;
             return (
@@ -61,12 +61,12 @@ export default function ProcesoPage() {
               >
                 <motion.span
                   whileHover={{ scale: 1.1 }}
-                  className="absolute -left-[42px] flex h-11 w-11 items-center justify-center rounded-full border border-cognac/60 bg-canvas-raised text-cognac shadow-plate sm:-left-[62px] sm:h-12 sm:w-12"
+                  className="absolute -left-[42px] flex h-11 w-11 items-center justify-center rounded-full border border-cognac/60 bg-coal-raised text-cognac shadow-plate sm:-left-[62px] sm:h-12 sm:w-12"
                 >
                   <Icon size={18} aria-hidden="true" />
                 </motion.span>
                 <div className="card overflow-hidden">
-                  <div className="flex items-baseline justify-between gap-3 border-b border-canvas-line bg-canvas-raised/40 px-5 py-3">
+                  <div className="flex items-baseline justify-between gap-3 border-b border-coal-line bg-coal-raised/40 px-5 py-3">
                     <span className="font-display text-5xl leading-none tracking-wider2 text-cognac sm:text-6xl">
                       {String(p.step).padStart(2, '0')}
                     </span>

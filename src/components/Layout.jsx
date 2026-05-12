@@ -12,7 +12,7 @@ export default function Layout() {
   }, [pathname]);
 
   return (
-    <div className="relative flex min-h-screen flex-col bg-canvas text-ink">
+    <div className="relative flex min-h-screen flex-col bg-coal text-ink">
       <Header />
       <main className="flex-1">
         <Outlet />

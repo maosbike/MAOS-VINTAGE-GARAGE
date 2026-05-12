@@ -32,8 +32,8 @@ const QUICK = [
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="relative border-t border-canvas-line bg-canvas-raised">
-      <div className="checker text-ink h-1 bg-canvas" aria-hidden="true" />
+    <footer className="relative border-t border-coal-line bg-coal-raised">
+      <div className="checker text-ink h-1 bg-coal" aria-hidden="true" />
       <div className="rule-brass" aria-hidden="true" />
 
       <div className="mx-auto grid w-full max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-24">
@@ -92,17 +92,17 @@ export default function Footer() {
           </h4>
           <ul className="flex gap-3">
             <li>
-              <a href="https://www.instagram.com/" target="_blank" rel="noreferrer noopener" aria-label="Instagram" className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-canvas-line text-ink-soft transition-colors hover:border-cognac hover:text-cognac">
+              <a href="https://www.instagram.com/" target="_blank" rel="noreferrer noopener" aria-label="Instagram" className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-coal-line text-ink-soft transition-colors hover:border-cognac hover:text-cognac">
                 <InstagramIcon />
               </a>
             </li>
             <li>
-              <a href="https://www.youtube.com/" target="_blank" rel="noreferrer noopener" aria-label="YouTube" className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-canvas-line text-ink-soft transition-colors hover:border-cognac hover:text-cognac">
+              <a href="https://www.youtube.com/" target="_blank" rel="noreferrer noopener" aria-label="YouTube" className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-coal-line text-ink-soft transition-colors hover:border-cognac hover:text-cognac">
                 <YoutubeIcon />
               </a>
             </li>
             <li>
-              <a href="https://wa.me/56900000000" target="_blank" rel="noreferrer noopener" aria-label="WhatsApp" className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-canvas-line text-ink-soft transition-colors hover:border-cognac hover:text-cognac">
+              <a href="https://wa.me/56900000000" target="_blank" rel="noreferrer noopener" aria-label="WhatsApp" className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-coal-line text-ink-soft transition-colors hover:border-cognac hover:text-cognac">
                 <MessageCircle size={18} aria-hidden="true" />
               </a>
             </li>
@@ -117,7 +117,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-canvas-line">
+      <div className="border-t border-coal-line">
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-2 px-4 py-5 font-mono text-[10px] uppercase tracking-widest2 text-ink-muted sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
           <p>© {year} Maos Vintage Garage. Todos los derechos reservados.</p>
           <p>Construido para coleccionistas exigentes.</p>

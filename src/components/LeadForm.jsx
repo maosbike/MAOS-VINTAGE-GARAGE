@@ -68,7 +68,7 @@ export default function LeadForm({ initialData, compact = false }) {
       </Field>
       <Field id="lead-budget" label="Presupuesto">
         <select id="lead-budget" value={form.budget} onChange={update('budget')} className="input-base">
-          {BUDGETS.map((b) => <option key={b} value={b} className="bg-canvas-raised">{b}</option>)}
+          {BUDGETS.map((b) => <option key={b} value={b} className="bg-coal-raised">{b}</option>)}
         </select>
       </Field>
       <Field id="lead-target" label="¿Qué auto buscas?" className="sm:col-span-2">
@@ -76,7 +76,7 @@ export default function LeadForm({ initialData, compact = false }) {
       </Field>
       <Field id="lead-origin" label="País de preferencia">
         <select id="lead-origin" value={form.origin} onChange={update('origin')} className="input-base">
-          {ORIGINS.map((o) => <option key={o} value={o} className="bg-canvas-raised">{o}</option>)}
+          {ORIGINS.map((o) => <option key={o} value={o} className="bg-coal-raised">{o}</option>)}
         </select>
       </Field>
       <Field id="lead-message" label="Mensaje" className="sm:col-span-2">

@@ -23,7 +23,7 @@ export default function Tooltip({ text, label = 'Más información' }) {
         <span
           role="tooltip"
           id={id}
-          className="absolute bottom-full left-1/2 z-20 mb-2 w-60 -translate-x-1/2 rounded-sm border border-cognac/40 bg-canvas-raised px-3 py-2 font-serif text-xs italic leading-relaxed text-ink-soft shadow-plate"
+          className="absolute bottom-full left-1/2 z-20 mb-2 w-60 -translate-x-1/2 rounded-sm border border-cognac/40 bg-coal-raised px-3 py-2 font-serif text-xs italic leading-relaxed text-ink-soft shadow-plate"
         >
           {text}
         </span>

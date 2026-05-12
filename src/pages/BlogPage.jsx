@@ -32,7 +32,7 @@ export default function BlogPage() {
         path="/blog"
       />
       <div className="section">
-        <div className="border-b border-canvas-line pb-6">
+        <div className="border-b border-coal-line pb-6">
           <p className="eyebrow">Diario · Guías de campo</p>
           <h1 className="mt-5 font-display text-[clamp(2.2rem,9vw,5.5rem)] uppercase leading-[0.9] tracking-tight sm:tracking-wider2">
             Diario de<br />
@@ -53,7 +53,7 @@ export default function BlogPage() {
               transition={{ duration: 0.4, delay: i * 0.1 }}
               className="card p-6"
             >
-              <div className="flex items-center justify-between border-b border-canvas-line pb-3">
+              <div className="flex items-center justify-between border-b border-coal-line pb-3">
                 <span className="font-mono text-[10px] font-bold uppercase tracking-widest2 text-cognac">
                   {post.issue}
                 </span>
